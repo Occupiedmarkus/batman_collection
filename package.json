@@ -17,9 +17,7 @@
       "access_heart_rate"
     ],
     "buildTargets": [
-      "vulcan",
-      "higgs",
-      "meson"
+      "vulcan"
     ],
     "i18n": {},
     "defaultLanguage": "en-US"
