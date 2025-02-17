@@ -27,14 +27,14 @@ function convertMsAgoToString(millisecondsAgo) {
 }
 
 // This function updates the label on the display that shows when data was last updated.
-function updateDisplay() {
+export function updateDisplay() {
   if (lastValueTimestamp !== undefined) {
     updatedLabel.text = convertMsAgoToString(Date.now() - lastValueTimestamp);
   }
 }
 
 // Create a new instance of the HeartRateSensor object
-var hrm = new HeartRateSensor();
+export var hrm = new HeartRateSensor();
 
 // Declare an event handler that will be called every time a new HR value is received.
 hrm.onreading = function() {
