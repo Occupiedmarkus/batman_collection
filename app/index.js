@@ -1,5 +1,9 @@
 import * as document from "document";
 import clock from "clock";
+import { updateDisplay, hrm } from "./heartrate.js";
+
+// Update the display every second
+setInterval(updateDisplay, 1000);
 
 clock.granularity = "minutes"; // seconds, minutes, or hours
 

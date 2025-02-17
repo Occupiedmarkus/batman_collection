@@ -13,9 +13,13 @@
     "appDisplayName": "Batman Beyond",
     "iconFile": "resources/icon.png",
     "wipeColor": "#ffffff",
-    "requestedPermissions": [],
+    "requestedPermissions": [
+      "access_heart_rate"
+    ],
     "buildTargets": [
-      "vulcan"
+      "vulcan",
+      "higgs",
+      "meson"
     ],
     "i18n": {},
     "defaultLanguage": "en-US"
