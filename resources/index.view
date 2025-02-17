@@ -4,7 +4,7 @@
       fill="black" font-size="32" font-family="Roboto"
       text-anchor="middle" text-length="20">00:00</text>
       <svg>
-  <text id="hrm" x="0" y="72%" class="large-value">42</text>
-  <text id="updated" x="0" y="92%" class="updated">now!</text>
+  <text id="hrm" x="50%" y="75%" class="large-value">00</text>
+  <text id="updated" x="50%" y="95%" class="updated">now!</text>
 </svg>
 </svg>
