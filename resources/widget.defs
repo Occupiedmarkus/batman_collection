@@ -1,6 +1,33 @@
 <svg>
-  <defs>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="import" href="/mnt/sysassets/system_widget.defs" />
-  </defs>
+    <!-- This is the definition section for the sprite animation -->
+    <defs>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="import" href="/mnt/sysassets/system_widget.defs" />
+        
+        <!-- Define the symbol for the frames -->
+        <symbol id="frames" href="#sprite-image">
+            <!-- repeatDur = duration of each frame -->
+            <animate
+                id="anim"
+                attributeName="value"
+                begin="enable"
+                from="01"
+                to="09"
+                dur="6"
+                repeatDur="3"
+                repeatCount="indefinite"
+            />
+            <!-- Image used in the animation -->
+            <image
+                href="frame_01.png"
+                width="99"
+                height="99"
+                x="50%-50"
+                y="50%-50"
+            />
+        </symbol>
+    </defs>
+
+    <!-- Use the defined symbol to display the animation -->
+    <use id="myAnimation" href="#frames" />
 </svg>
