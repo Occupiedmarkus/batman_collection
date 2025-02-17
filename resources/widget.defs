@@ -9,8 +9,9 @@
             <!-- repeatDur = duration of each frame -->
             <animate
                 id="anim"
-                attributeName="value"
+                attributeName="href"
                 begin="enable"
+                values="beyond/frame_01.png; beyond/frame_02.png; beyond/frame_03.png; beyond/frame_04.png; beyond/frame_05.png; beyond/frame_06.png; beyond/frame_07.png; beyond/frame_08.png; beyond/frame_09.png"
                 from="01"
                 to="09"
                 dur="6"
@@ -19,7 +20,7 @@
             />
             <!-- Image used in the animation -->
             <image
-                href="frame_01.png"
+                href="beyond/frame_01.png"
                 width="99"
                 height="99"
                 x="50%-50"
