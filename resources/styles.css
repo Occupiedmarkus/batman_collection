@@ -1,11 +1,11 @@
 .defaultText {
-  font-size: 32px; /* Use pixels for font size */
+  font-size: 32; /* Use pixels for font size */
   font-family: 'Roboto', sans-serif; /* Added fallback */
   font-weight: normal; /* Corrected to 'normal' */
 }
 
 .clock-label {
-  font-size: 60px; /* Use pixels for font size */
+  font-size: 72; /* Use pixels for font size */
   font-family: 'Roboto', sans-serif; /* Added fallback */
   text-anchor: middle; /* Center the text */
   fill: white; /* Set text color */
@@ -13,7 +13,7 @@
 
 .large-value {
   font-family: 'Seville-Book', sans-serif; /* Added fallback */
-  font-size: 60px; /* Use pixels for font size */
+  font-size: 60; /* Use pixels for font size */
  
 }
 
