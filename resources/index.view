@@ -1,9 +1,15 @@
 <svg viewBox="0 0 100 100">
   <use id="myAnimation" href="#frames" />
-    <!-- Circle highlighting the date -->
-  <circle class="date-circle" cx="25" cy="40" r="13"  
-  fill="none" stroke="red" stroke-width="5" />
-  <text id="clock-label" class="clock-label" x="40%" y="40%" fill="white">00:00:00</text>
+  <g id="mins" pointer-events="visible" transform="translate(50%,50%)">
+    <rect x="$-4" y="-110" width="8" height="110" fill="#e0e0e0" />
+  </g>
+  <g id="hours" pointer-events="visible" transform="translate(50%,50%)">
+    <rect x="$-6" y="-75" width="12" height="75" fill="#ffffff" />
+  </g>
+  <g id="secs" pointer-events="visible" transform="translate(50%,50%)">
+    <rect x="$-2" y="-120" width="4" height="120" fill="#ff0000" />
+  </g>
+  <circle cx="50%" cy="50%" r="10" fill="#444444" />
   <text id="hrm" class="large-value" x="52%" y="73%" text-anchor="middle" fill="#F80070">000</text>
   <text id="date-label" x="50%" y="92%" text-anchor="middle" font-size="20" fill="#FFFFFF">TUE DD TH MMM YY</text>
 </svg>
