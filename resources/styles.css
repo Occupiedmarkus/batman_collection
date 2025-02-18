@@ -5,7 +5,7 @@
 }
 
 .clock-label {
-  font-size: 48px; /* Use pixels for font size */
+  font-size: 60px; /* Use pixels for font size */
   font-family: 'Roboto', sans-serif; /* Added fallback */
   text-anchor: middle; /* Center the text */
   fill: white; /* Set text color */

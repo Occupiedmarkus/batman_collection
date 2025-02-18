@@ -8,33 +8,15 @@ clock.granularity = "minutes";
 const clockLabel = document.getElementById("clock-label");
 const dateLabel = document.getElementById("date-label"); 
 
-// Update time and date every tick
+// Update time every tick
 clock.addEventListener("tick", (evt) => {
   clockLabel.text = evt.date.toTimeString().slice(0, -7);
 });
 
-dateLabel.text = evt.date.toDateString();
+// Set the date only once
+const now = new Date();
+dateLabel.text = now.toDateString(0,-4); // Initialize date display
 
-// Function to update the clock and date
-function updateTimeAndDate() {
-  const now = new Date();
-  
-  // Format time
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
-  const seconds = now.getSeconds().toString().padStart(2, '0'); 
-  clockLabel.text = `${hours}:${minutes}:${seconds}`;
-  
-  // Format date as dd/mm
-  const day = now.getDate().toString().padStart(2, '0');
-  const month = (now.getMonth() + 1).toString().padStart(2, '0'); 
-  dateLabel.text = `${day}/${month}`; 
-}
-
-
-
-// Initial call to set the time and date immediately
-updateTimeAndDate();
 
 // Update the display every second (for heart rate)
 setInterval(() => {
