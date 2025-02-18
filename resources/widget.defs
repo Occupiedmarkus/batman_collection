@@ -21,10 +21,10 @@
             <!-- Image used in the animation -->
             <image
                 href="beyond/frame_01.png"
-                width="99"
-                height="99"
-                x="50%-50"
-                y="50%-50"
+                width="400"
+                height="400"
+                x="-8%"
+                y="-15%"
             />
         </symbol>
     </defs>
