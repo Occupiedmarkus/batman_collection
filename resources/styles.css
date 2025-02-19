@@ -4,12 +4,6 @@
   font-weight: normal; /* Corrected to 'normal' */
 }
 
-.clock-label {
-  font-size: 72; /* Use pixels for font size */
-  font-family: 'Roboto', sans-serif; /* Added fallback */
-  text-anchor: middle; /* Center the text */
-  fill: white; /* Set text color */
-}
 
 .large-value {
   font-family: 'Seville-Book', sans-serif; /* Added fallback */
