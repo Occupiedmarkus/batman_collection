@@ -2,7 +2,6 @@ import * as document from "document";
 import clock from "clock";
 import { updateDisplay } from "./heartrate.js"; // Ensure this path is correct
 
-const clockLabel = document.getElementById("clock-label");
 const dateLabel = document.getElementById("date-label"); 
 
 / Tick every second
