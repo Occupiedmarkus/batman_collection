@@ -1,50 +1,11 @@
 import * as document from "document";
 import clock from "clock";
 import { updateDisplay } from "./heartrate.js"; // Ensure this path is correct
+import { initializeDate } from "./clock.js";  // Import the function from clock.js
 
-// Set clock granularity to seconds for real-time updates
-clock.granularity = "minutes"; 
 
-const clockLabel = document.getElementById("clock-label");
-const dateLabel = document.getElementById("date-label"); 
-
-// Update time every tick
-clock.addEventListener("tick", (evt) => {
-  clockLabel.text = evt.date.toTimeString().slice(0, -7);
-});
-
-// Function to get the ordinal suffix for a given date
-function getOrdinalSuffix(date) {
-    if (date > 3 && date < 21) return 'TH'; // Special case for 11th to 13th
-    switch (date % 10) {
-        case 1: return 'ST';
-        case 2: return 'ND';
-        case 3: return 'RD';
-        default: return 'TH';
-    }
-}
-
-// Set the date only once
-const now = new Date();
-
-// Define arrays for day and month names
-const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-// Get the day, date, month, and year
-const dayName = days[now.getDay()]; // Day name (0-6)
-const date = now.getDate(); // Date (1-31)
-const monthName = months[now.getMonth()]; // Month name (0-11)
-const year = now.getFullYear().toString().slice(-2); // Last two digits of year
-
-// Get the ordinal suffix
-const suffix = getOrdinalSuffix(date);
-
-// Construct the formatted date string
-const formattedDate = `${dayName} ${date} ${suffix} ${monthName} ${year}`;
-
-// Set the date label
-dateLabel.text = formattedDate; // Initialize date display
+// Initialize date display
+initializeDate(); // Call the function to set the date
 
 // Update the display every second (for heart rate)
 setInterval(() => {
