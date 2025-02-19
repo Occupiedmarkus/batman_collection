@@ -11,9 +11,9 @@ let lastValueTimestamp = Date.now();
 hrLabel.text = "--";
 
 // This function updates the heart rate display
-export function updateDisplay() {
+export function updateHR() {
   // Just log for now to confirm it's being called
-  console.log("Updating heart rate display...");
+  console.log("Current heart rate:"+ hrm.heartRate);
 }
 
 // Create a new instance of the HeartRateSensor object

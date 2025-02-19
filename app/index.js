@@ -1,17 +1,20 @@
 import * as document from "document";
 import clock from "clock";
-import { updateDisplay } from "./heartrate.js"; // Ensure this path is correct
+import { updateHR } from "./heartrate.js"; // Ensure this path is correct
 import { initializeDate } from "./clock.js";  // Import the function from clock.js
-
+import { updateBatteryLevel } from "./battery.js"; // Import battery function
 
 // Initialize date display
 initializeDate(); // Call the function to set the date
 
 // Update the display every second (for heart rate)
 setInterval(() => {
-  console.log("Calling updateDisplay...");
-  updateDisplay();  // Ensure this function is defined
+  updateHR();  // Ensure this function is defined
 }, 1000);
+
+setInterval(() => {
+  updateBatteryLevel(); // Update battery display
+}, 20000); // Adjust the interval as needed
 
 const myAnimation = document.getElementById("myAnimation");
 let isAnimating = false; 
