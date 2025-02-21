@@ -6,15 +6,16 @@ import { updateBatteryLevel } from "./battery.js"; // Import battery function
 
 // Initialize date display
 initializeDate(); // Call the function to set the date
+startBatteryMonitoring();
 
-// Update the display every second (for heart rate)
+// Update the display every 30 minutes (for heart rate)
 setInterval(() => {
   updateHR();  // Ensure this function is defined
-}, 1000);
+}, 900000);
 
 setInterval(() => {
   updateBatteryLevel(); // Update battery display
-}, 20000); // Adjust the interval as needed
+}, 1000); // Adjust the interval as needed
 
 const myAnimation = document.getElementById("myAnimation");
 let isAnimating = false; 

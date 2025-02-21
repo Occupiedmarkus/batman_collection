@@ -17,12 +17,12 @@ export function updateHR() {
 }
 
 // Create a new instance of the HeartRateSensor object
-export var hrm = new HeartRateSensor();
+var hrm = new HeartRateSensor();
 
 // Declare an event handler that will be called every time a new HR value is received.
 hrm.onreading = function() {
   // Peek the current sensor values
-  console.log("Current heart rate: " + hrm.heartRate);
+  console.log("Initialising HeartRateSensor..."+ hrm.heartRate);
   hrLabel.text = hrm.heartRate;
 
   // Update the last value timestamp
