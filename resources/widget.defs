@@ -20,7 +20,7 @@
             />
             <!-- Image used in the animation -->
             <image
-                href="beyond/frame_01.png"
+                href="beyond/frame_04.png"
                 width="400"
                 height="400"
                 x="-8%"

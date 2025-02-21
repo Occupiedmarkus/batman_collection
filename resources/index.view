@@ -2,7 +2,7 @@
   <use id="myAnimation" href="#frames" />
     <!-- Circle highlighting the date -->
   <text id="battery-image" font-size="20" fill="#FFFFFF">▯▯▯▯▯</text>
-  <text id="clock-label" class="clock-label" x="40%" y="40%" fill="white">00:00:00</text>
+  <text id="clock-label" class="clock-label" x="40%" y="45%" fill="white">00:00:00</text>
   <text id="hrm" class="large-value" x="52%" y="73%" text-anchor="middle" fill="#F80070">000</text>
   <text id="date-label" x="50%" y="92%" text-anchor="middle" font-size="20" fill="#FFFFFF">TUE DD TH MMM YY</text>
 </svg>
