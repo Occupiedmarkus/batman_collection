@@ -1,33 +1,63 @@
 let document = require("document");
 import { HeartRateSensor } from "heart-rate";
+import { display } from "display";
+import { me } from "appbit";
 
 // Fetch UI elements we will need to change
 let hrLabel = document.getElementById("hrm");
-
-// Keep a timestamp of the last reading received. Start when the app is started.
-let lastValueTimestamp = Date.now();
+let hrIcon = document.getElementById("hrIcon");
 
 // Initialize the UI with some values
 hrLabel.text = "--";
 
-// This function updates the heart rate display
-export function updateHR() {
-  // Just log for now to confirm it's being called
-  console.log("Current heart rate:"+ hrm.heartRate);
-}
-
 // Create a new instance of the HeartRateSensor object
-var hrm = new HeartRateSensor();
+let hrm = new HeartRateSensor();
 
-// Declare an event handler that will be called every time a new HR value is received.
+// Event handler for heart rate readings
 hrm.onreading = function() {
-  // Peek the current sensor values
-  console.log("Initialising HeartRateSensor..."+ hrm.heartRate);
-  hrLabel.text = hrm.heartRate;
+  let currentHR = hrm.heartRate;
+  console.log("Heart rate reading: " + currentHR);
+  hrLabel.text = currentHR;
 
-  // Update the last value timestamp
-  lastValueTimestamp = Date.now();
+  // Animate the icon based on heart rate
+  if (currentHR > 0) {
+    hrIcon.animate("enable");
+  } else {
+    hrIcon.animate("disable");
+  }
 }
 
-// Begin monitoring the sensor
-hrm.start();
+// Function to start heart rate measurements
+function startHRMeasurements() {
+  if (me.permissions.granted("access_heart_rate")) {
+    hrm.start();
+    console.log("Heart rate measurements started.");
+  } else {
+    console.log("Heart rate permission not granted.");
+  }
+}
+
+// Function to stop heart rate measurements
+function stopHRMeasurements() {
+  hrm.stop();
+  console.log("Heart rate measurements stopped.");
+}
+
+// Initialize the heart rate sensor and set up display detection
+export function initializeHR() {
+  if (display.on) {
+    startHRMeasurements();
+  }
+
+  // React to display on/off
+  display.onchange = function() {
+    if (display.on) {
+      startHRMeasurements();
+    } else {
+      stopHRMeasurements();
+    }
+  }
+}
+
+// Start the initialization process
+initializeHR();

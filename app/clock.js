@@ -5,7 +5,7 @@ import clock from "clock";
 clock.granularity = "minutes"; 
 
 const clockLabel = document.getElementById("clock-label");
-const dateLabel = document.getElementById("date-label"); // Move this declaration up
+const dateLabel = document.getElementById("date-label");
 
 // Update time every tick
 clock.addEventListener("tick", (evt) => {
@@ -46,3 +46,6 @@ export function initializeDate() {
     // Set the date label
     dateLabel.text = formattedDate; // Set the date label text
 }
+
+// Call initializeDate to set the initial date display
+initializeDate();

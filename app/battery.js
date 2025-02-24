@@ -1,59 +1,40 @@
 import * as document from "document";
-import { battery } from "power"; // Import the power module to access battery info
+import { battery } from "power"; // Import the battery module
 
-// Get all block elements
 const blocks = [
-    document.getElementById("block1"),
-    document.getElementById("block2"),
-    document.getElementById("block3"),
-    document.getElementById("block4"),
-    document.getElementById("block5"),
+  document.getElementById("block1"),
+  document.getElementById("block2"),
+  document.getElementById("block3"),
+  document.getElementById("block4"),
+  document.getElementById("block5")
 ];
 
-// Log blocks to check for undefined elements
-blocks.forEach((block, index) => {
-    if (!block) {
-        console.error(`block${index + 1} is undefined.`);
-    }
-});
-
-// Function to update the battery display
-function updateBatteryDisplay(batteryLevel) {
-    // Ensure blocks are defined
-    if (!blocks.every(block => block)) {
-        console.error("One or more battery block elements are not found.");
-        return; // Exit the function if any block is undefined
-    }
-
-    // Remove 'active' class from all blocks, ensuring the block exists
-    blocks.forEach(block => {
-        if (block) {
-            block.classList.remove('active');
-        } else {
-            console.error("Attempted to remove 'active' from an undefined block.");
-        }
-    });
-
-    // Calculate the number of active blocks based on battery level
-    const activeBlocks = Math.ceil(batteryLevel / 20); 
-    for (let i = 0; i < activeBlocks; i++) {
-        if (blocks[i]) { // Check if the block exists before adding 'active'
-            blocks[i].classList.add('active');
-        } else {
-            console.error(`block${i + 1} is undefined when trying to add 'active'.`);
-        }
-    }
-
-    // Log the battery level and active block count for debugging
-    console.log("Battery Level: " + batteryLevel + "%, Active Blocks: " + activeBlocks);
-}
-
-// Function to check and display the current battery level
+// Function to update battery level display
 export function updateBatteryLevel() {
-    const batteryLevel = battery.chargeLevel; // Get the current battery charge level (0-100)
-    console.log("Current battery level: " + batteryLevel + "%"); // Log the battery level
-    updateBatteryDisplay(batteryLevel); // Update the display
-}
+  const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
+  console.log("Battery level: " + batteryLevel + "%");
 
-// Update battery level on startup
-updateBatteryLevel();
+  // Reset opacity for all blocks
+  blocks.forEach(block => {
+    if (block) {
+      block.setAttribute("opacity", "1"); // Set each block to full opacity
+    }
+  });
+
+  // Adjust opacity based on battery level
+  if (batteryLevel <= 20) {
+    blocks[1]?.setAttribute("opacity", "0"); // Hide block 2
+    blocks[2]?.setAttribute("opacity", "0"); // Hide block 3
+    blocks[3]?.setAttribute("opacity", "0"); // Hide block 4
+    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+  } else if (batteryLevel <= 40) {
+    blocks[2]?.setAttribute("opacity", "0"); // Hide block 3
+    blocks[3]?.setAttribute("opacity", "0"); // Hide block 4
+    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+  } else if (batteryLevel <= 60) {
+    blocks[3]?.setAttribute("opacity", "0"); // Hide block 4
+    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+  } else if (batteryLevel <= 80) {
+    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+  }
+}

@@ -1,37 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="myWidget" class="background">
-  <defs>
-    <!-- Define the symbol for the frames -->
-    <symbol id="frames">
-      <image
-        id="animatedImage"
-        href="beyond/frame_04.png"
-        width="400"
-        height="400"
-        x="-8%"
-        y="-15%"
-      />
-      <animate
-        attributeName="href"
-        begin="0s; myAnimation.begin+600ms"
-        values="beyond/frame_01.png; beyond/frame_02.png; beyond/frame_03.png; beyond/frame_04.png; beyond/frame_05.png; beyond/frame_06.png; beyond/frame_07.png; beyond/frame_08.png; beyond/frame_09.png"
-        dur="6s"
-        repeatCount="indefinite"
-      />
+<svg width="336" height="336" xmlns="http://www.w3.org/2000/svg">
+  <image href="beyond/frame_02.png" x="-15%" y="-23%" width="130%" height="130%" />
+    <symbol id="animatedHRImage">
+        <image 
+            id="hrIcon" 
+            x="-15%" 
+            y="-23%" 
+            width="130%" 
+            height="130%" 
+            href="beyond/frame_03.png" 
+            load="sync" 
+        />
+        <animate attributeName="opacity" begin="enable" end="disable" final="restore" from="1" to="0" dur="1" />
     </symbol>
-  </defs>
+  
+    <use id="hrImage" href="#animatedHRImage" />
+  
+    <g id="battery-display">
+        <text class="block" id="block1" x="10" y="140" font-size="40" fill="white" opacity="1">I</text>
+        <text class="block" id="block2" x="20" y="140" font-size="40" fill="white" opacity="1">I</text>
+        <text class="block" id="block3" x="30" y="140" font-size="40" fill="white" opacity="1">I</text>
+        <text class="block" id="block4" x="40" y="140" font-size="40" fill="white" opacity="1">I</text>
+        <text class="block" id="block5" x="50" y="140" font-size="40" fill="white" opacity="1">I</text>
+    </g>
 
-  <!-- Use the defined symbol to display the animation -->
-  <use id="myAnimation" href="#frames" />
-
-  <g id="battery-display">
-    <text class="block" id="block1" x="10" y="160" font-size="40" fill="white">I</text>
-    <text class="block" id="block2" x="20" y="160" font-size="40" fill="white">I</text>
-    <text class="block" id="block3" x="30" y="160" font-size="40" fill="white">I</text>
-    <text class="block" id="block4" x="40" y="160" font-size="40" fill="white">I</text>
-    <text class="block" id="block5" x="50" y="160" font-size="40" fill="white">I</text>
-  </g>
-
-  <text id="clock-label" class="clock-label" x="40%" y="45%" fill="white">00:00:00</text>
-  <text id="hrm" class="large-value" x="52%" y="73%" text-anchor="middle" fill="#F80070">000</text>
-  <text id="date-label" x="50%" y="92%" text-anchor="middle" font-size="20" fill="#FFFFFF">TUE DD TH MMM YY</text>
+    <text id="clock-label" class="clock-label" x="39%" y="45%" fill="white">00:00</text>
+    <text id="hrm" class="large-value" x="50%" y="73%" text-anchor="middle" fill="white">000</text>
+    <text id="date-label" x="50%" y="92%" text-anchor="middle" font-size="20" fill="#FFFFFF">TUE DD TH MMM YY</text>
 </svg>
