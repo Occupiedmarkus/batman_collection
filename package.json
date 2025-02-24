@@ -25,5 +25,17 @@
   "scripts": {
     "build": "fitbit-build",
     "debug": "fitbit"
-  }
+  },
+  "main": "index.js",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Occupiedmarkus/batman_collection.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Occupiedmarkus/batman_collection/issues"
+  },
+  "homepage": "https://github.com/Occupiedmarkus/batman_collection#readme",
+  "description": ""
 }

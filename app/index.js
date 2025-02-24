@@ -1,37 +1,40 @@
 import * as document from "document";
 import clock from "clock";
-import { updateHR } from "./heartrate.js"; // Ensure this path is correct
-import { initializeDate } from "./clock.js"; // Import the function from clock.js
-import { updateBatteryLevel } from "./battery.js"; // Import battery functions
+import { updateHR } from "./heartrate.js"; 
+import { initializeDate } from "./clock.js"; 
+import { updateBatteryLevel } from "./battery.js"; 
 
 // Initialize date display
-initializeDate(); // Call the function to set the date
+initializeDate(); 
 
-
-// Update the display every 15 minutes (for heart rate)
+// Update the display every 15 minutes for heart rate
 setInterval(() => {
-  updateHR();  // Ensure this function is defined in heartrate.js
+  try {
+    updateHR();
+  } catch (error) {
+    console.error("Error updating heart rate:", error);
+  }
 }, 900000); // 15 minutes in milliseconds
 
-// Update battery level display every minute (adjust as needed)
+// Update battery level display every minute
 setInterval(() => {
-    updateBatteryLevel(); // Update battery display
+  try {
+    updateBatteryLevel();
+  } catch (error) {
+    console.error("Error updating battery level:", error);
+  }
 }, 60000); // 1 minute in milliseconds
 
 const myAnimation = document.getElementById("myAnimation");
-let isAnimating = false; 
 
-// Start the animation initially in a disabled state
+// Start the animation initially in an enabled state
 if (myAnimation) {
-    myAnimation.animate("disable");
+    myAnimation.animate("enable");
 }
 
 // Toggle animation on touch
 document.addEventListener("touchstart", () => {
-    if (isAnimating) {
-        myAnimation.animate("disable"); 
-    } else {
-        myAnimation.animate("enable"); 
+    if (myAnimation) {
+        myAnimation.animate("disable"); // Stop the animation
     }
-    isAnimating = !isAnimating; 
 });

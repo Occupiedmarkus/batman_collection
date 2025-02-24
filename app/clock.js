@@ -1,4 +1,3 @@
-// clock.js
 import * as document from "document";
 import clock from "clock";
 
@@ -6,6 +5,7 @@ import clock from "clock";
 clock.granularity = "minutes"; 
 
 const clockLabel = document.getElementById("clock-label");
+const dateLabel = document.getElementById("date-label"); // Move this declaration up
 
 // Update time every tick
 clock.addEventListener("tick", (evt) => {
@@ -25,11 +25,11 @@ export function getOrdinalSuffix(date) {
 
 // Initialize date display
 export function initializeDate() {
-    const now = new Date();
-
     // Define arrays for day and month names
     const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+    const now = new Date(); // Get current date and time
 
     // Get the day, date, month, and year
     const dayName = days[now.getDay()]; // Day name (0-6)
@@ -44,6 +44,5 @@ export function initializeDate() {
     const formattedDate = `${dayName} ${date} ${suffix} ${monthName} ${year}`;
 
     // Set the date label
-    const dateLabel = document.getElementById("date-label");
-    dateLabel.text = formattedDate; // Initialize date display
+    dateLabel.text = formattedDate; // Set the date label text
 }

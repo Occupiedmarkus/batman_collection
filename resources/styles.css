@@ -8,7 +8,6 @@
   font-size: 72; /* Use pixels for font size */
   font-family: 'Roboto', sans-serif; /* Added fallback */
   text-anchor: middle; /* Center the text */
-  fill: white; /* Set text color */
 }
 
 .large-value {
@@ -17,8 +16,3 @@
  
 }
 
-.date-circle {
-  /* Circle color with transparency */
-  stroke: white; /* Outline color */
-  stroke-width: 1; /* Outline width */
-}
