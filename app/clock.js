@@ -1,51 +1,49 @@
-import * as document from "document";
+import { me } from "appbit";
 import clock from "clock";
+import document from "document";
+import { preferences } from "user-settings"; 
+import * as util from "./utils.js";
 
-// Set clock granularity to minutes for real-time updates
-clock.granularity = "minutes"; 
+// TIME
+let hours1 = document.getElementById("hours1");
+let hours2 = document.getElementById("hours2");
+let mins1 = document.getElementById("mins1");
+let mins2 = document.getElementById("mins2");
 
-const clockLabel = document.getElementById("clock-label");
-const dateLabel = document.getElementById("date-label");
+// Set clock granularity to seconds for real-time updates
+clock.granularity = "seconds";
 
-// Update time every tick
-clock.addEventListener("tick", (evt) => {
-  clockLabel.text = evt.date.toTimeString().slice(0, -7);
-});
+export function initializeClock() {
+    clock.ontick = evt => {
+        let d = evt.date;
 
-// Function to get the ordinal suffix for a given date
-export function getOrdinalSuffix(date) {
-    if (date > 3 && date < 21) return 'TH'; // Special case for 11th to 13th
-    switch (date % 10) {
-        case 1: return 'ST';
-        case 2: return 'ND';
-        case 3: return 'RD';
-        default: return 'TH';
+        // HOURS
+        let hours = d.getHours();
+        if (preferences.clockDisplay === "12h") {
+            // 12h format
+            hours = hours % 12 || 12;
+        }
+        setHours(hours);
+
+        // MINUTES
+        let minutes = d.getMinutes();
+        setMins(minutes);
     }
 }
 
-// Initialize date display
-export function initializeDate() {
-    // Define arrays for day and month names
-    const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-    const now = new Date(); // Get current date and time
-
-    // Get the day, date, month, and year
-    const dayName = days[now.getDay()]; // Day name (0-6)
-    const date = now.getDate(); // Date (1-31)
-    const monthName = months[now.getMonth()]; // Month name (0-11)
-    const year = now.getFullYear().toString().slice(-2); // Last two digits of year
-
-    // Get the ordinal suffix
-    const suffix = getOrdinalSuffix(date);
-
-    // Construct the formatted date string
-    const formattedDate = `${dayName} ${date} ${suffix} ${monthName} ${year}`;
-
-    // Set the date label
-    dateLabel.text = formattedDate; // Set the date label text
+// Set hours display
+function setHours(val) {
+    drawDigit(Math.floor(val / 10), hours1); // Tens place
+    drawDigit(val % 10, hours2);             // Ones place
 }
 
-// Call initializeDate to set the initial date display
-initializeDate();
+// Set minutes display
+function setMins(val) {
+    drawDigit(Math.floor(val / 10), mins1); // Tens place
+    drawDigit(val % 10, mins2);             // Ones place
+}
+
+// Draw a digit on the display
+function drawDigit(val, place) {
+    place.image = `${val}.png`; // Set the image to the corresponding digit PNG
+}

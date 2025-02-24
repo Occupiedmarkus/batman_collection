@@ -1,19 +1,20 @@
-// index.js
 import * as document from "document";
-import clock from "clock";
+import { initializeClock } from "./clock.js";  
+import { initializeDate } from "./date.js"; 
 import { initializeHR } from "./heartrate.js";  
-import { initializeDate } from "./clock.js"; 
 import { updateBatteryLevel } from "./battery.js"; 
 
 document.addEventListener("DOMContentLoaded", () => {
-    initializeDate(); 
-    initializeHR(); 
+    // Initialize the clock and date displays
+    initializeClock(); // Initialize the clock display
+    initializeDate(); // Initialize the date display
+    initializeHR(); // Initialize heart rate monitoring
 
     // Update battery level display initially and then every minute
-    updateBatteryLevel(); // This should log the battery level
+    updateBatteryLevel(); // Log the initial battery level
     setInterval(() => {
         try {
-            updateBatteryLevel();
+            updateBatteryLevel(); // Update battery level every minute
         } catch (error) {
             console.error("Error updating battery level:", error);
         }
