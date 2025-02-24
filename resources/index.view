@@ -26,11 +26,11 @@
 
     <!-- Clock Display -->
     <g id="clock-display" x="50%" y="45%" text-anchor="middle">
-        <image id="hours1" href="0.png" x="6" y="144" width="61" height="91" fill="#FFFFFF" class="foreground" />
-        <image id="hours2" href="0.png" x="75" y="144" width="61" height="91" fill="#FFFFFF" class="foreground" />
-        <image href="separator.png" x="143" y="161" width="16" height="63" fill="#FFFFFF" class="foreground" />
-        <image id="mins1" href="0.png" x="167" y="144" width="61" height="91" fill="#FFFFFF" class="foreground" />
-        <image id="mins2" href="0.png" x="234" y="144" width="61" height="91" fill="#FFFFFF" class="foreground" />
+        <image id="hours1" href="0.png" x="6" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
+        <image id="hours2" href="0.png" x="75" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
+        <image href="separator.png" x="143" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
+        <image id="mins1" href="0.png" x="167" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
+        <image id="mins2" href="0.png" x="234" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
     </g>
 
     <text id="hrm" class="large-value" x="50%" y="73%" text-anchor="middle" fill="white">000</text>
