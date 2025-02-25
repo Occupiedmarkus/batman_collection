@@ -19,10 +19,11 @@ updateBatteryLevel();
 battery.onchange = () => {
     updateBatteryLevel();
 };
+
 // Function to update battery level display
 export function updateBatteryLevel() {
     
-    updateSvgTexts("I"); // Call the function 
+    updateSvgTexts("I"); // Set battery indicator 
     const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
     
     // Log the current battery level
@@ -88,4 +89,25 @@ updateBatteryLevel();
 // Add an event listener for battery level changes
 battery.onchange = () => {
     updateBatteryLevel();
+};
+
+battery.oncharge = () => {
+    const elements = [b1, b2, b3, b4, b5];
+    let isGreen = true;
+
+    const interval = setInterval(() => {
+        elements.forEach(element => {
+            element.style.fill = isGreen ? "green" : "white";
+        });
+        isGreen = !isGreen;
+    }, 500); // Change color every 500 milliseconds (0.5 seconds)
+
+    // Clear the interval when charging stops
+    battery.onstopcharge = () => {
+        clearInterval(interval);
+        // Reset fill color to default (e.g., white)
+        elements.forEach(element => {
+            element.style.fill = "white";
+        });
+    };
 };
