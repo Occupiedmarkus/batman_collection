@@ -25,13 +25,13 @@
     </g>
 
     <!-- Clock Display -->
-    <g id="clock-display" x="50%" y="45%" text-anchor="middle">
-        <image id="hours1" href="0.png" x="6" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
-        <image id="hours2" href="0.png" x="75" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
-        <image href="separator.png" x="143" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
-        <image id="mins1" href="0.png" x="167" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
-        <image id="mins2" href="0.png" x="234" y="140" width="30" height="45" fill="#FFFFFF" class="foreground" />
-    </g>
+    <svg id="clock-display">
+        <image id="hours1" href="0.png" x="118" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
+        <image id="hours2" href="0.png" x="138" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
+        <image href="separator.png" x="164" y="135" width="8" height="23" fill="red" class="foreground" />
+        <image id="mins1" href="0.png" x="172" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
+        <image id="mins2" href="0.png" x="192" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
+    </svg>
 
     <text id="hrm" class="large-value" x="50%" y="73%" text-anchor="middle" fill="white">000</text>
     <text id="date-label" x="50%" y="92%" text-anchor="middle" font-size="20" fill="#FFFFFF">TUE DD TH MMM YY</text>

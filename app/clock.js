@@ -1,7 +1,10 @@
 import { me } from "appbit";
+import { preferences } from "user-settings";
 import clock from "clock";
 import document from "document";
 import * as util from "./utils.js";
+
+clock.granularity = "minutes";
 
 // TIME
 let hours1 = document.getElementById("hours1");
@@ -9,37 +12,33 @@ let hours2 = document.getElementById("hours2");
 let mins1 = document.getElementById("mins1");
 let mins2 = document.getElementById("mins2");
 
-// Set clock granularity to seconds for real-time updates
-clock.granularity = "seconds";
-
 // Function to initialize the clock
 export function initializeClock() {
-    clock.ontick = evt => {
-        let d = evt.date;
+    let today = new Date();
+    let hours = today.getHours();
+    let mins = today.getMinutes();
 
-        // HOURS
-        let hours = d.getHours();
-        if (preferences.clockDisplay === "12h") {
-            // 12h format
-            hours = hours % 12 || 12;
-        } else {
-            // 24h format
-            hours = util.zeroPad(hours);
-        }
-        setHours(hours);
+    if (preferences.clockDisplay === "12h") {
+        // 12h format
+        hours = hours % 12 || 12;
+    } else {
+        // 24h format
+        hours = util.zeroPad(hours);
+    }
 
-        // MINUTES
-        let minute = ("0" + d.getMinutes()).slice(-2);
-        setMins(minute);
-    };
+    setHours(hours);
+    setMins(mins);
+
 }
+
+clock.ontick = () => initializeClock();
 
 // Set hours display
 function setHours(val) {
     if (val > 9) {
         drawDigit(Math.floor(val / 10), hours1);
     } else {
-        drawDigit("", hours1);
+        drawDigit("0", hours1);
     }
     drawDigit(Math.floor(val % 10), hours2);
 }
