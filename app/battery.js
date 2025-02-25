@@ -7,10 +7,11 @@ let b2 = document.getElementById("block2");
 let b3 = document.getElementById("block3");
 let b4 = document.getElementById("block4");
 let b5 = document.getElementById("block5");
-let svg = document.getElementById("battery-display")
+let svg = document.getElementById("battery-display");
 
 // Variable to store the last reported battery level
 let lastBatteryLevel = -1; // Initialize to an invalid value
+let flashInterval; // Variable to store the interval ID
 
 // Initial call to update the battery level
 updateBatteryLevel();
@@ -22,7 +23,6 @@ battery.onchange = () => {
 
 // Function to update battery level display
 export function updateBatteryLevel() {
-    
     updateSvgTexts("I"); // Set battery indicator 
     const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
     
@@ -33,14 +33,22 @@ export function updateBatteryLevel() {
     if (Math.abs(batteryLevel - lastBatteryLevel) >= 10 || lastBatteryLevel === -1) {
         lastBatteryLevel = batteryLevel; // Update the last recorded level
 
-        // white =20%, grey=10%
-        if (batteryLevel<=10){
+        // Update colors based on battery level
+           // Update colors based on battery level
+        if (battery.charging) {
+            // Set all blocks to green when charging
+            b1.style.fill = "#58ba1a";
+            b2.style.fill = "#58ba1a";
+            b3.style.fill = "#58ba1a";
+            b4.style.fill = "#58ba1a";
+            b5.style.fill = "#58ba1a";
+        }else if (batteryLevel <= 10) {
             b1.style.fill = "black";
             b2.style.fill = "black";
             b3.style.fill = "red";
             b4.style.fill = "black";
             b5.style.fill = "black"; // Critical level
-        }else if (batteryLevel <= 20) {
+        } else if (batteryLevel <= 20) {
             b1.style.fill = "black";
             b2.style.fill = "black";
             b3.style.fill = "white";
@@ -72,42 +80,22 @@ export function updateBatteryLevel() {
             b5.style.fill = "white"; // Clear previous
         }
     }
-}
+};
+
+// Add charging state listener
+battery.onchargingchanged = () => {
+        // Optionally, reset to a default color when not charging
+        updateBatteryLevel();
+};
 
 // Function to update the text of the SVG elements
 function updateSvgTexts(text) {
-        b1.text = text; // Update text for element 1
-        b2.text = text; // Update text for element 2
-        b3.text = text; // Update text for element 3
-        b4.text = text; // Update text for element 4
-        b5.text = text; // Update text for element 5
-} 
+    b1.text = text; // Update text for element 1
+    b2.text = text; // Update text for element 2
+    b3.text = text; // Update text for element 3
+    b4.text = text; // Update text for element 4
+    b5.text = text; // Update text for element 5
+}
 
 // Initial call to update the battery level
 updateBatteryLevel();
-
-// Add an event listener for battery level changes
-battery.onchange = () => {
-    updateBatteryLevel();
-};
-
-battery.oncharge = () => {
-    const elements = [b1, b2, b3, b4, b5];
-    let isGreen = true;
-
-    const interval = setInterval(() => {
-        elements.forEach(element => {
-            element.style.fill = isGreen ? "green" : "white";
-        });
-        isGreen = !isGreen;
-    }, 500); // Change color every 500 milliseconds (0.5 seconds)
-
-    // Clear the interval when charging stops
-    battery.onstopcharge = () => {
-        clearInterval(interval);
-        // Reset fill color to default (e.g., white)
-        elements.forEach(element => {
-            element.style.fill = "white";
-        });
-    };
-};
