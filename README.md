@@ -24,17 +24,7 @@ Please make sure to credit me for the original work.
 
 ---
 This is my first clockface project.  
-I used **Sublime Text** 
-
-![Sublime Text Icon](https://cdn.worldvectorlogo.com/logos/sublime-text.svg)
-
- **GitHub Desktop** 
-
-![GitHub Desktop Icon](https://desktop.github.com/images/desktop-icon.svg)
-
-and **Aseprite** 
-
-![Aseprite Icon](https://en.m.wikipedia.org/wiki/Aseprite#/media/File%3ALogo_Aseprite.svg)
+I used **Sublime Text**![Sublime Text Icon](https://p7.hiclipart.com/preview/662/600/850/sublime-text-computer-icons-others.jpg) **GitHub Desktop**![GitHub Desktop Icon](https://desktop.github.com/images/desktop-icon.svg) **Aseprite**![Aseprite Icon](https://raw.githubusercontent.com/dominickjohn/aseprite-big-sur-icon/main/AsepriteSurIcon.png)
 
 I learned a lot, and I hope you do too.
 
