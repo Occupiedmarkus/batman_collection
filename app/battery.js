@@ -32,31 +32,37 @@ export function updateBatteryLevel() {
     if (Math.abs(batteryLevel - lastBatteryLevel) >= 10 || lastBatteryLevel === -1) {
         lastBatteryLevel = batteryLevel; // Update the last recorded level
 
-        // Adjust color based on battery level
-        if (batteryLevel <= 20) {
-            b1.style.fill = "black";
-            b2.style.fill = "black";
-            b3.style.fill = "black";
-            b4.style.fill = "black";
-            b5.style.fill = "red"; // Critical level
+        // white =20%, grey=10%
+        if (batteryLevel<=10){
+            b1.style.fill = "";
+            b2.style.fill = "";
+            b3.style.fill = "red";
+            b4.style.fill = "";
+            b5.style.fill = ""; // Critical level
+        }else if (batteryLevel <= 20) {
+            b1.style.fill = "";
+            b2.style.fill = "";
+            b3.style.fill = "white";
+            b4.style.fill = "";
+            b5.style.fill = ""; 
         } else if (batteryLevel <= 40) {
-            b1.style.fill = "black";
-            b2.style.fill = "black";
-            b3.style.fill = "black";
-            b4.style.fill = "black";
-            b5.style.fill = "red"; // Low level
+            b1.style.fill = "";
+            b2.style.fill = "grey";
+            b3.style.fill = "white";
+            b4.style.fill = "grey";
+            b5.style.fill = ""; // Low level
         } else if (batteryLevel <= 60) {
-            b1.style.fill = "black";
-            b2.style.fill = "black";
-            b3.style.fill = "black";
-            b4.style.fill = "white"; // Medium level
-            b5.style.fill = "white"; // Clear previous
+            b1.style.fill = "grey";
+            b2.style.fill = "grey";
+            b3.style.fill = "white";
+            b4.style.fill = "grey"; // Medium level
+            b5.style.fill = "grey"; // Clear previous
         } else if (batteryLevel <= 80) {
-            b1.style.fill = "black";
-            b2.style.fill = "black";
+            b1.style.fill = "grey";
+            b2.style.fill = "white";
             b3.style.fill = "white"; // High level
             b4.style.fill = "white"; // Clear previous
-            b5.style.fill = "white"; // Clear previous
+            b5.style.fill = "grey"; // Clear previous
         } else {
             b1.style.fill = "white"; // Full
             b2.style.fill = "white"; // Clear previous
