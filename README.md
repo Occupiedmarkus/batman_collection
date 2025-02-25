@@ -26,17 +26,16 @@ Please make sure to credit me for the original work.
 This is my first clockface project.  
 I used **Sublime Text** 
 
-![Sublime Text Icon](https://upload.wikimedia.org/wikipedia/en/d/d2/Sublime_Text_Logo.png)
+![Sublime Text Icon](https://cdn.worldvectorlogo.com/logos/sublime-text.svg)
 
-, **GitHub Desktop** 
+ **GitHub Desktop** 
 
 ![GitHub Desktop Icon](https://desktop.github.com/images/desktop-icon.svg)
 
-, and **Aseprite** 
+and **Aseprite** 
 
-![Aseprite Icon](https://www.aseprite.org/assets/img/favicon.png)
+![Aseprite Icon](https://iconape.com/wp-content/png_logo_vector/aseprite.png)
 
- to help me.  
 I learned a lot, and I hope you do too.
 
 Enjoy your Batman Beyond watch face and embrace the future of style and functionality!
