@@ -1,4 +1,6 @@
-# Batman Beyond ![Batman Beyond](beyond.png)
+# Batman Beyond 
+
+![Batman Beyond](beyond.png)
 
 ## Features
 - **Red Stylish Animated Icon**: Adds a dynamic and visually appealing element to the watch face.
@@ -14,12 +16,27 @@
 We are constantly working to improve and expand the functionality of Batman Beyond. Stay tuned for more exciting features!
 
 ## Installation
-Link [here](https://gallery.fitbit.com/details/d6646e43-c8f3-4f99-a87c-335f0c2dc838).
+You can install this watch face by visiting the [Fitbit Gallery](https://gallery.fitbit.com/details/d6646e43-c8f3-4f99-a87c-335f0c2dc838).
 
 ## Contribution
-This project... credit me.
+This project was created by me. If you would like to contribute, please feel free to submit a pull request.  
+Please make sure to credit me for the original work.
 
 ---
+This is my first clockface project.  
+I used **Sublime Text** 
+
+![Sublime Text Icon](https://upload.wikimedia.org/wikipedia/en/d/d2/Sublime_Text_Logo.png)
+
+, **GitHub Desktop** 
+
+![GitHub Desktop Icon](https://desktop.github.com/images/desktop-icon.svg)
+
+, and **Aseprite** 
+
+![Aseprite Icon](https://www.aseprite.org/assets/img/favicon.png)
+
+ to help me.  
+I learned a lot, and I hope you do too.
 
 Enjoy your Batman Beyond watch face and embrace the future of style and functionality!
-
