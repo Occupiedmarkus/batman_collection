@@ -14,10 +14,10 @@
 We are constantly working to improve and expand the functionality of Batman Beyond. Stay tuned for more exciting features!
 
 ## Installation
-Link here.
+Link [here](https://gallery.fitbit.com/details/d6646e43-c8f3-4f99-a87c-335f0c2dc838).
 
 ## Contribution
-This project is private and unlicensed. Only authorized individuals have access to the code and the project.
+This project... credit me.
 
 ---
 
