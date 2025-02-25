@@ -11,30 +11,35 @@ const blocks = [
 
 // Function to update battery level display
 export function updateBatteryLevel() {
-  const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
-  console.log("Battery level: " + batteryLevel + "%");
+console.log("Updating battery level...");
+const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
+  if (batteryLevel !== undefined) {
+      console.log("Battery level: " + batteryLevel + "%");
+  } else {
+      console.log("Battery level is undefined. Check battery module.");
+  }
 
-  // Reset opacity for all blocks
+  // Reset color for all blocks
   blocks.forEach(block => {
     if (block) {
-      block.setAttribute("opacity", "1"); // Set each block to full opacity
+      block.setAttribute("fill", "white"); // Set each block to white (or original color)
     }
   });
 
-  // Adjust opacity based on battery level
+  // Adjust color based on battery level
   if (batteryLevel <= 20) {
-    blocks[1]?.setAttribute("opacity", "0"); // Hide block 2
-    blocks[2]?.setAttribute("opacity", "0"); // Hide block 3
-    blocks[3]?.setAttribute("opacity", "0"); // Hide block 4
-    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+    blocks[1]?.setAttribute("fill", "black"); // Change block 2 to black
+    blocks[2]?.setAttribute("fill", "black"); // Change block 3 to black
+    blocks[3]?.setAttribute("fill", "black"); // Change block 4 to black
+    blocks[4]?.setAttribute("fill", "black"); // Change block 5 to black
   } else if (batteryLevel <= 40) {
-    blocks[2]?.setAttribute("opacity", "0"); // Hide block 3
-    blocks[3]?.setAttribute("opacity", "0"); // Hide block 4
-    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+    blocks[2]?.setAttribute("fill", "black"); // Change block 3 to black
+    blocks[3]?.setAttribute("fill", "black"); // Change block 4 to black
+    blocks[4]?.setAttribute("fill", "black"); // Change block 5 to black
   } else if (batteryLevel <= 60) {
-    blocks[3]?.setAttribute("opacity", "0"); // Hide block 4
-    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+    blocks[3]?.setAttribute("fill", "black"); // Change block 4 to black
+    blocks[4]?.setAttribute("fill", "black"); // Change block 5 to black
   } else if (batteryLevel <= 80) {
-    blocks[4]?.setAttribute("opacity", "0"); // Hide block 5
+    blocks[4]?.setAttribute("fill", "black"); // Change block 5 to black
   }
 }

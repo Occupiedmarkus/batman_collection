@@ -4,9 +4,9 @@
     <symbol id="animatedHRImage">
         <image 
             id="hrIcon" 
-            x="-15%" 
+            x="-30%" 
             y="-23%" 
-            width="130%" 
+            width="160%" 
             height="130%" 
             href="beyond/frame_03.png" 
             load="sync" 
@@ -16,23 +16,28 @@
   
     <use id="hrImage" href="#animatedHRImage" />
 
-    <g id="battery-display">
-        <text class="block" id="block1" x="10" y="140" font-size="40" fill="white" opacity="1">I</text>
-        <text class="block" id="block2" x="20" y="140" font-size="40" fill="white" opacity="1">I</text>
-        <text class="block" id="block3" x="30" y="140" font-size="40" fill="white" opacity="1">I</text>
-        <text class="block" id="block4" x="40" y="140" font-size="40" fill="white" opacity="1">I</text>
-        <text class="block" id="block5" x="50" y="140" font-size="40" fill="white" opacity="1">I</text>
-    </g>
+    <svg id="battery-display">
+        <text class="block" id="block1" x="10" y="140" font-size="40" fill="white" >I</text>
+        <text class="block" id="block2" x="20" y="140" font-size="40" fill="white" >I</text>
+        <text class="block" id="block3" x="30" y="140" font-size="40" fill="white" >I</text>
+        <text class="block" id="block4" x="40" y="140" font-size="40" fill="white" >I</text>
+        <text class="block" id="block5" x="50" y="140" font-size="40" fill="white" >I</text>
+    </svg>
 
     <!-- Clock Display -->
     <svg id="clock-display">
         <image id="hours1" href="0.png" x="118" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
         <image id="hours2" href="0.png" x="138" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
-        <image href="separator.png" x="164" y="135" width="8" height="23" fill="red" class="foreground" />
+        <image href="separator.png" x="164" y="135" width="8" height="23" fill="grey" class="foreground" />
         <image id="mins1" href="0.png" x="172" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
         <image id="mins2" href="0.png" x="192" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
+    
+    <!-- HRM -->
     </svg>
-
-    <text id="hrm" class="large-value" x="50%" y="73%" text-anchor="middle" fill="white">000</text>
+        <image id="hr1" href="0.png" x="136" y="219" width="30" height="30" fill="grey" class="foreground" />
+        <image id="hr2" href="0.png" x="156" y="219" width="30" height="30" fill="grey" class="foreground" />
+        <image id="hr3" href="0.png" x="176" y="219" width="30" height="30" fill="grey" class="foreground" />
+    <svg id="hrm">
+    </svg>
     <text id="date-label" x="50%" y="92%" text-anchor="middle" font-size="20" fill="#FFFFFF">TUE DD TH MMM YY</text>
 </svg>

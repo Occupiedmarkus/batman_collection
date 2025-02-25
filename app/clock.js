@@ -1,4 +1,3 @@
-import { me } from "appbit";
 import { preferences } from "user-settings";
 import clock from "clock";
 import document from "document";
