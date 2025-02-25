@@ -1,5 +1,6 @@
 import { HeartRateSensor } from "heart-rate";
 import document from "document";
+import display from "display";
 
 // Heart Rate Sensor
 const hrm = new HeartRateSensor();
@@ -14,12 +15,26 @@ export function initializeHR() {
     hr1.image = "0.png";
     hr2.image = "0.png";
     hr3.image = "0.png";
+
+    if (display.on) {
+      //already start measurements
+      hrm.start();
+    }
+  }
+
+  //react on display on/off
+  display.onchange = function() {
+    if (display.on) {
+      hrm.start();
+    } else {
+      hrm.stop();
+    }
 }
 
 // Function to handle heart rate readings
 hrm.onreading = () => {
     const heartRate = hrm.heartRate;
-
+    console.log("Current HR: " + heartRate);
     if (heartRate) {
         // Display heart rate using images
         displayHeartRate(heartRate);

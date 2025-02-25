@@ -13,11 +13,7 @@ const blocks = [
 export function updateBatteryLevel() {
 console.log("Updating battery level...");
 const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
-  if (batteryLevel !== undefined) {
-      console.log("Battery level: " + batteryLevel + "%");
-  } else {
-      console.log("Battery level is undefined. Check battery module.");
-  }
+console.log("Battery level: " + batteryLevel + "%");
 
   // Reset color for all blocks
   blocks.forEach(block => {

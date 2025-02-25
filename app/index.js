@@ -10,14 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeDate(); // Initialize the date display
     intervalFunction(); // Initialize heart rate monitoring
     initializeHR();
-    
     // Update battery level display initially and then every minute
     updateBatteryLevel(); // Log the initial battery level
-    setInterval(() => {
-        try {
-            updateBatteryLevel(); // Update battery level every minute
-        } catch (error) {
-            console.error("Error updating battery level:", error);
-        }
-    }, 60000); // 1 minute in milliseconds
 });
