@@ -34,7 +34,7 @@ I used **Sublime Text**
 
 and **Aseprite** 
 
-![Aseprite Icon](https://iconape.com/wp-content/png_logo_vector/aseprite.png)
+![Aseprite Icon](https://en.m.wikipedia.org/wiki/Aseprite#/media/File%3ALogo_Aseprite.svg)
 
 I learned a lot, and I hope you do too.
 
