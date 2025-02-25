@@ -35,23 +35,23 @@ export function updateBatteryLevel() {
 
         // white =20%, grey=10%
         if (batteryLevel<=10){
-            b1.style.fill = "";
-            b2.style.fill = "";
+            b1.style.fill = "black";
+            b2.style.fill = "black";
             b3.style.fill = "red";
-            b4.style.fill = "";
-            b5.style.fill = ""; // Critical level
+            b4.style.fill = "black";
+            b5.style.fill = "black"; // Critical level
         }else if (batteryLevel <= 20) {
-            b1.style.fill = "";
-            b2.style.fill = "";
+            b1.style.fill = "black";
+            b2.style.fill = "black";
             b3.style.fill = "white";
-            b4.style.fill = "";
-            b5.style.fill = ""; 
+            b4.style.fill = "black";
+            b5.style.fill = "black"; 
         } else if (batteryLevel <= 40) {
-            b1.style.fill = "";
+            b1.style.fill = "black";
             b2.style.fill = "grey";
             b3.style.fill = "white";
             b4.style.fill = "grey";
-            b5.style.fill = ""; // Low level
+            b5.style.fill = "black"; // Low level
         } else if (batteryLevel <= 60) {
             b1.style.fill = "grey";
             b2.style.fill = "grey";
