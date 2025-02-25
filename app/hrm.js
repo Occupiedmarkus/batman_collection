@@ -22,6 +22,7 @@ let hrText = document.getElementById("hrText")
 // Initialize heart rate display
 export function initializeHR() {
     hrText.style.fill = '';
+    hrText.text="--";
     hr1.image = "0.png";
     hr2.image = "0.png";
     hr3.image = "0.png";

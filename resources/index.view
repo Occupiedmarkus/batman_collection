@@ -16,14 +16,14 @@
     </symbol>
   
     <use id="hrImage" href="#animatedHRImage" />
-    <text id="hrText" fill="red" font-size="35" font-family="Colfax-Regular" text-anchor="start" text-length="32" x="-30%" y="-23%">--</text>
+    <text id="hrText" fill="black" font-size="35" font-family="Colfax-Regular" text-anchor="start" text-length="32" x="-30%" y="-23%"></text>
     </svg>
     <svg id="battery-display">
-        <text class="block" id="block1" x="10" y="140" font-size="40" fill="white" >I</text>
-        <text class="block" id="block2" x="20" y="140" font-size="40" fill="white" >I</text>
-        <text class="block" id="block3" x="30" y="140" font-size="40" fill="white" >I</text>
-        <text class="block" id="block4" x="40" y="140" font-size="40" fill="white" >I</text>
-        <text class="block" id="block5" x="50" y="140" font-size="40" fill="white" >I</text>
+        <text class="block" id="block1" x="10" y="140" font-size="40" fill="white" ></text>
+        <text class="block" id="block2" x="20" y="140" font-size="40" fill="white" ></text>
+        <text class="block" id="block3" x="30" y="140" font-size="40" fill="white" ></text>
+        <text class="block" id="block4" x="40" y="140" font-size="40" fill="white" ></text>
+        <text class="block" id="block5" x="50" y="140" font-size="40" fill="white" ></text>
     </svg>
 
     <!-- Clock Display -->
