@@ -12,7 +12,7 @@
             opacity="1"
             load="sync" 
         />
-        <animate attributeName="opacity" begin="enable" end="disable" final="restore" from="1" to="0" dur="1" />
+        <animate attributeName="opacity" begin="enable" end="disable" final="restore" from="1" to="0" dur="1"/>
     </symbol>
   
     <use id="hrImage" href="#animatedHRImage" />

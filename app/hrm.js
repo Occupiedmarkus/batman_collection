@@ -30,7 +30,9 @@ export function initializeHR() {
     hrm = new HeartRateSensor();
     if (display.on) {
       //already start measurements
+
       hrm.start();
+      updateAnimationState();
     }
   }
 
