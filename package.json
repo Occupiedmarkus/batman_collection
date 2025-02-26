@@ -27,7 +27,10 @@
     "debug": "fitbit"
   },
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "fp-ts": "^2.8.2",
+    "io-ts": "^2.2.10"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Occupiedmarkus/batman_collection.git"
