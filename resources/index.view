@@ -39,5 +39,5 @@
         <image id="hr1" href="0.png" x="136" y="219" width="30" height="30" fill="grey" class="foreground" />
         <image id="hr2" href="0.png" x="156" y="219" width="30" height="30" fill="grey" class="foreground" />
         <image id="hr3" href="0.png" x="176" y="219" width="30" height="30" fill="grey" class="foreground" />
-    <text id="date-label" x="50%" y="92%" text-anchor="middle" font-size="20" fill="#FFFFFF">TUE DD TH MMM YY</text>
+    <text id="date-label" x="50%" y="95%" text-anchor="middle" font-size="28" fill="#FFFFFF">TUE DD TH MMM YY</text>
 </svg>
