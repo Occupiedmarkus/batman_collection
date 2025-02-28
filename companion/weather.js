@@ -26,7 +26,7 @@ export function displayWeather() {
                 }
             })
             .catch(ex => {
-                console.error(ex);
+                console.error("Error fetching weather data:", ex);
             });
     } else {
         console.error("Location permission not granted.");
