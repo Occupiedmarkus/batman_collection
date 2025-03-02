@@ -1,6 +1,6 @@
 # Batman Beyond 
 
-![Batman Beyond](resources/frame_01.png)
+![Batman Beyond](resources/beyond/frame_01.png)
 
 ## Features
 - **Red Stylish Animated Icon**: Adds a dynamic and visually appealing element to the watch face.
