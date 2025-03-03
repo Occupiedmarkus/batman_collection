@@ -1,13 +1,13 @@
 <svg width="336" height="336" xmlns="http://www.w3.org/2000/svg">
-    <image href="beyond/frame_02.png" x="10%" y="0" width="75%" height="75%" />
+    <image href="beyond/frame_02.png" x="13%" y="0" width="75%" height="75%" />
     <svg>
     <symbol id="animatedHRImage">
         <image 
             id="hrIcon" 
-            x="-30%" 
-            y="-23%" 
+            x="0" 
+            y="10%" 
             width="100%" 
-            height="100%" 
+            height="80%" 
             href="beyond/frame_03.png" 
             opacity="1"
             load="sync" 
@@ -16,7 +16,7 @@
     </symbol>
   
     <use id="hrImage" href="#animatedHRImage" />
-    <text id="hrText" fill="black" font-size="35" font-family="Colfax-Regular" text-anchor="start" text-length="32" x="-30%" y="-23%"></text>
+    <text id="hrText" fill="black" font-size="35" font-family="Colfax-Regular" text-anchor="start" text-length="32" x="-26%" y="-30%"></text>
     </svg>
     <svg id="battery-display">
         <text class="block" id="block1" x="10" y="140" font-size="40" fill="white" ></text>
@@ -39,5 +39,5 @@
         <image id="hr1" href="0.png" x="136" y="219" width="30" height="30" fill="grey" class="foreground" />
         <image id="hr2" href="0.png" x="156" y="219" width="30" height="30" fill="grey" class="foreground" />
         <image id="hr3" href="0.png" x="176" y="219" width="30" height="30" fill="grey" class="foreground" />
-    <text id="date-label" x="50%" y="95%" text-anchor="middle" font-size="28" fill="#FFFFFF">TUE DD TH MMM YY</text>
+    <text id="date-label" x="50%" y="100%" text-anchor="middle" font-size="30" fill="#FFFFFF">TUE DD TH MMM YY</text>
 </svg>
