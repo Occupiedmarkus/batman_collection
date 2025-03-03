@@ -3,11 +3,14 @@ registerSettingsPage(({ settings }) => (
     <Section
       title={
         <Text bold align="center">
-          App Settings
+          Clockface Settings
         </Text>
       }
     >
-      <Text>stop</Text>
+      <Toggle
+        label="Enable background animation"
+        settingsKey="toggleaAnimationInput"
+      />
     </Section>
   </Page>
 ));

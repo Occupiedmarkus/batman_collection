@@ -42,5 +42,5 @@
 
    <text id="date-label" x="50%" y="100%" text-anchor="middle" font-size="30" fill="#FFFFFF">TUE DD TH MMM YY</text>
    <!-- Weather Display -->
-    <image id="weatherImage" href="" x="75%" y="15%" width="60" height="60"/>
+    <image id="weatherImage" href="weather/sunny_day.png" x="75%" y="15%" width="60" height="60"/>
 </svg>

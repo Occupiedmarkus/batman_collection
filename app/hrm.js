@@ -19,10 +19,11 @@ let hr3 = document.getElementById("hr3");
 let hrImage = document.getElementById("hrImage");
 let hrText = document.getElementById("hrText")
 
+hrText.text="--";
+
 // Initialize heart rate display
 export function initializeHR() {
     hrText.style.fill = '';
-    hrText.text="--";
     hr1.image = "0.png";
     hr2.image = "0.png";
     hr3.image = "0.png";
