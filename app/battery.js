@@ -21,11 +21,18 @@ battery.onchange = () => {
     updateBatteryLevel();
 };
 
-// Function to update battery level display
 export function updateBatteryLevel() {
     updateSvgTexts("I"); // Set battery indicator 
     const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
-    
+
+    const COLORS = {
+        critical: "red",
+        low: "black",
+        medium: "grey",
+        high: "white",
+        charging: "#39ff14", // Neon Green
+    };
+
     // Log the current battery level
     console.log("Battery level: " + batteryLevel + "%");
 
@@ -34,50 +41,21 @@ export function updateBatteryLevel() {
         lastBatteryLevel = batteryLevel; // Update the last recorded level
 
         // Update colors based on battery level
-           // Update colors based on battery level
         if (battery.charging) {
             // Set all blocks to green when charging
-            b1.style.fill = "#58ba1a";
-            b2.style.fill = "#58ba1a";
-            b3.style.fill = "#58ba1a";
-            b4.style.fill = "#58ba1a";
-            b5.style.fill = "#58ba1a";
-        }else if (batteryLevel <= 10) {
-            b1.style.fill = "black";
-            b2.style.fill = "black";
-            b3.style.fill = "red";
-            b4.style.fill = "black";
-            b5.style.fill = "black"; // Critical level
-        } else if (batteryLevel >20 && batteryLevel <= 29) {
-            b1.style.fill = "black";
-            b2.style.fill = "black";
-            b3.style.fill = "white";
-            b4.style.fill = "black";
-            b5.style.fill = "black"; 
-        } else if (batteryLevel >40 && batteryLevel <= 49) {
-            b1.style.fill = "black";
-            b2.style.fill = "grey";
-            b3.style.fill = "white";
-            b4.style.fill = "grey";
-            b5.style.fill = "black"; // Low level
-        } else if (batteryLevel >60 && batteryLevel <= 69) {
-            b1.style.fill = "grey";
-            b2.style.fill = "grey";
-            b3.style.fill = "white";
-            b4.style.fill = "grey"; // Medium level
-            b5.style.fill = "grey"; // Clear previous
-        } else if (batteryLevel > 80 && batteryLevel <= 89) {
-            b1.style.fill = "grey";
-            b2.style.fill = "white";
-            b3.style.fill = "white"; // High level
-            b4.style.fill = "white"; // Clear previous
-            b5.style.fill = "grey"; // Clear previous
+            setBlockColors(COLORS.charging, COLORS.charging, COLORS.charging, COLORS.charging, COLORS.charging);
+        } else if (batteryLevel <= 10) {
+            setBlockColors(COLORS.low, COLORS.low, COLORS.critical, COLORS.low, COLORS.low); // Critical level
+        } else if (batteryLevel > 10 && batteryLevel <= 19) {
+            setBlockColors(COLORS.low, COLORS.low, COLORS.high, COLORS.low, COLORS.low);
+        } else if (batteryLevel > 19 && batteryLevel <= 39) {
+            setBlockColors(COLORS.low, COLORS.medium, COLORS.high, COLORS.medium, COLORS.low); // Low level
+        } else if (batteryLevel > 39 && batteryLevel <= 69) {
+            setBlockColors(COLORS.medium, COLORS.medium, COLORS.high, COLORS.medium, COLORS.medium); // Medium level
+        } else if (batteryLevel > 69 && batteryLevel <= 89) {
+            setBlockColors(COLORS.medium, COLORS.high, COLORS.high, COLORS.high, COLORS.medium); // High level
         } else {
-            b1.style.fill = "white"; // Full
-            b2.style.fill = "white"; // Clear previous
-            b3.style.fill = "white"; // Clear previous
-            b4.style.fill = "white"; // Clear previous
-            b5.style.fill = "white"; // Clear previous
+            setBlockColors(COLORS.high, COLORS.high, COLORS.high, COLORS.high, COLORS.high); // Full
         }
     }
 };
@@ -88,6 +66,14 @@ battery.onchargingchanged = () => {
         updateBatteryLevel();
 };
 
+// Helper function to set block colors
+function setBlockColors(c1, c2, c3, c4, c5) {
+    b1.style.fill = c1;
+    b2.style.fill = c2;
+    b3.style.fill = c3;
+    b4.style.fill = c4;
+    b5.style.fill = c5;
+}
 // Function to update the text of the SVG elements
 function updateSvgTexts(text) {
     b1.text = text; // Update text for element 1
