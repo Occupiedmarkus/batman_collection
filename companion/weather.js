@@ -15,7 +15,6 @@ export function displayWeather() {
                     // Create a message object to send to the app
                     const weatherUpdate = {
                         temperature,
-                        condition,
                         locationName
                     };
 

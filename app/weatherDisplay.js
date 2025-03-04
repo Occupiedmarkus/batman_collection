@@ -3,10 +3,10 @@ import { peerSocket } from "messaging";
 
 const weatherImage = document.getElementById("weatherImage");
 
-export function updateWeatherDisplay(weatherUpdate) {
-    const { temp, cond, loc, uni } = weatherUpdate;
+// app/weatherDisplay.js
+export function updateWeatherDisplay(data) {
+    const { temp, cond, loc, uni } = data;
 
-    const weatherImage = document.getElementById("weatherImage");
     console.log(`Weather: ${temp}°${uni} in ${loc} - Condition: ${cond}.`);
 
     // Set the appropriate weather image based on the condition
@@ -38,7 +38,7 @@ export function updateWeatherDisplay(weatherUpdate) {
             weatherImage.href = "../resources/weather/thunderstorms.png";
             break;
         default:
-            weatherImage.href = "../resources/weather/default.png"; // Clear image for unrecognized conditions
+            weatherImage.href = "../resources/weather/default.png";
             console.log("Default case triggered");
     }
 }
