@@ -1,6 +1,4 @@
 
-
-export default WeatherCondition;
 // Define a mapping for weather condition codes
 const WeatherCondition = {
     0: "Clear Night",
@@ -44,3 +42,5 @@ const WeatherCondition = {
     38: "Thunderstorms",
     39: "Windy"
 };
+
+export default WeatherCondition;
