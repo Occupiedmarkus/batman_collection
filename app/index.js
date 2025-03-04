@@ -9,6 +9,7 @@ import { checkWristStatus } from "./accelerometer.js";
 
 // Listen for incoming messages from the companion
 peerSocket.onmessage = (evt) => {
+    console.log("index.js")
     updateWeatherDisplay(evt); // Call the function to update the display
 };
 
