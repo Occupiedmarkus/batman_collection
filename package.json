@@ -2,7 +2,7 @@
   "name": "batman_beyond",
   "version": "1.1.0",
   "private": true,
-  "license": "LICENSED",
+  "license": "MIT LICENSED",
   "devDependencies": {
     "@fitbit/sdk": "~6.1.0",
     "@fitbit/sdk-cli": "^1.7.3"
