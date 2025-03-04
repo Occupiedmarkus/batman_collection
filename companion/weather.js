@@ -37,7 +37,7 @@ export function displayWeather() {
                     const conditionName = findWeatherConditionName(WeatherCondition, conditionCode);
 
                     weatherUpdate.cond = conditionName;
-                    console.log("Code:" + conditionCode + "- Condition:" + conditionName".");
+                    console.log("Code:" + conditionCode + "- Condition:" + conditionName+".");
                     weatherUpdate.temp = Math.floor(currentWeather.temperature);
                     weatherUpdate.loc = data.locations[0].name;
                     weatherUpdate.uni = data.temperatureUnit;
