@@ -7,7 +7,7 @@ const weatherImage = document.getElementById("weatherImage");
 export function updateWeatherDisplay(data) {
     const { temp, cond, loc, uni } = data;
 
-    console.log(`Weather: ${temp}°${uni} in ${loc} - Condition: ${cond}.`);
+    console.log(`Weather: ${temp}°${uni} in ${loc}-${cond}.`);
 
     // Set the appropriate weather image based on the condition
     switch (cond) {
