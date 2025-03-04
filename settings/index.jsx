@@ -9,7 +9,7 @@ registerSettingsPage(({ settings }) => (
     >
       <Toggle
         label="Enable background animation"
-        settingsKey="toggleaAnimationInput"
+        settingsKey="toggleAnimationInput"
       />
     </Section>
   </Page>
