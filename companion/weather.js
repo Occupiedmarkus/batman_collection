@@ -1,30 +1,28 @@
 import { peerSocket } from "messaging";
 import { me as companion } from "companion";
 import weather from "weather";
-
-// Define or import the WeatherCondition mapping
-const WeatherCondition = {
-    0: "Clear",
-    1: "Partly Cloudy",
-    2: "Cloudy",
-    3: "Overcast",
-    4: "Fog",
-    5: "Rain",
-    6: "Snow",
-    32: "Windy",
-    // Add other conditions as necessary
-};
+import WeatherCondition from './weatherConditions.js';
 
 let queuedUpdates = []; // Array to hold updates until the socket is open
+
+function findWeatherConditionName(WeatherCondition, conditionCode) {
+    for (const code in WeatherCondition) {
+        if (parseInt(code) === conditionCode) {
+            return WeatherCondition[code]; // Return the name corresponding to the code
+        }
+    }
+    return "Unknown"; // Return "Unknown" if the code is not found
+}
 
 export function displayWeather() {
     if (companion.permissions.granted("access_location")) {
         weather.getWeatherData()
             .then((data) => {
-                console.log("Weather received:", data);
+                console.log("Weather data received:", data); // Log the entire data object
 
                 let weatherUpdate = {
                     temp: null,
+                    code: "Unknown",
                     cond: "Unknown",
                     loc: "Unknown",
                     uni: "C" // Default unit
@@ -32,10 +30,20 @@ export function displayWeather() {
 
                 if (data.locations.length > 0) {
                     const currentWeather = data.locations[0].currentWeather;
-                    weatherUpdate.cond = findWeatherConditionName(WeatherCondition, currentWeather.weatherCondition);
+
+                    
+
+                    const conditionCode = currentWeather.weatherCondition;
+                    const conditionName = findWeatherConditionName(WeatherCondition, conditionCode);
+
+                    // Log the raw condition code and the corresponding name
+                    console.log("Condition code:", conditionCode);
+
+                    weatherUpdate.cond = conditionName; // Set the descriptive name
                     weatherUpdate.temp = Math.floor(currentWeather.temperature);
                     weatherUpdate.loc = data.locations[0].name;
                     weatherUpdate.uni = data.temperatureUnit;
+                    weatherUpdate.code = conditionCode;
 
                     console.log("Weather fetched.");
                 } else {
@@ -51,6 +59,7 @@ export function displayWeather() {
                 }
                 sendUpdate({
                     temp: null,
+                    code: "Error retrieving data",
                     cond: "Error retrieving data",
                     loc: "Unknown",
                     uni: "C"
@@ -60,6 +69,7 @@ export function displayWeather() {
         console.error("Location permission not granted.");
         sendUpdate({
             temp: null,
+            code: "Permission denied",
             cond: "Permission denied",
             loc: "Unknown",
             uni: "C"
@@ -84,8 +94,3 @@ peerSocket.onopen = () => {
         peerSocket.send(update); // Send it
     }
 };
-
-// Function to map weather condition codes to names
-function findWeatherConditionName(WeatherCondition, conditionCode) {
-    return WeatherCondition[conditionCode] || "Unknown"; // Use the mapping for conditions
-}
