@@ -42,7 +42,7 @@
         <image id="hr2" href="0.png" x="156" y="219" width="30" height="30" fill="grey" class="foreground" />
         <image id="hr3" href="0.png" x="176" y="219" width="30" height="30" fill="grey" class="foreground" />
 
-   <text id="date-label" x="50%" y="100%" text-anchor="middle" font-size="30" fill="#FFFFFF">TUE DD TH MMM YY</text>
+   <text id="date-label" x="50%" y="95%" text-anchor="middle" font-size="30" fill="#FFFFFF">TUE DD TH MMM YY</text>
    <!-- Weather Display -->
     <image id="weatherImage" x="75%" y="15%" width="60" height="60"/>
 </svg>
