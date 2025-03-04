@@ -1,6 +1,7 @@
-import { me as companion } from "companion";
 import weather from "weather";
 import { peerSocket } from "messaging"; // Import messaging for communication
+import { me as companion } from "companion";
+import weather from "weather"; // Ensure this is the correct import for the weather API
 
 export function displayWeather() {
     if (companion.permissions.granted("access_location")) {
@@ -11,17 +12,17 @@ export function displayWeather() {
                     const temperature = Math.floor(currentWeather.temperature);
                     const condition = currentWeather.weatherCondition;
                     const locationName = data.locations[0].name;
+                    const loc = data.locations[0].name;
 
-                    // Create a message object to send to the app
                     const weatherUpdate = {
                         temperature,
                         locationName
+                        uni
                     };
 
-                    // Send the weather data to the app
-                    if (peerSocket.readyState === peerSocket.OPEN) {
-                        peerSocket.send(weatherUpdate);
-                    }
+                    console.log("Weather data fetched:", weatherUpdate);
+                    
+                    // Send the weather data to the app to update the UI
                 }
             })
             .catch(ex => {
@@ -30,4 +31,6 @@ export function displayWeather() {
     } else {
         console.error("Location permission not granted.");
     }
+}
+
 }
