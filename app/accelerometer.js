@@ -52,14 +52,14 @@ export function checkWristStatus() {
 // Function to stop sensors
 function stopSensors() {
     initializeHR.stop(); // Stop heart rate monitoring
-    updateWeatherDisplay.stop(); // Stop weather updates (if applicable)
+     // Stop weather updates (if applicable)
     console.log("Sensors stopped: off-wrist");
 }
 
 // Function to start sensors
 function startSensors() {
     initializeHR.start(); // Restart heart rate monitoring
-    updateWeatherDisplay.start(); // Restart weather updates (if applicable)
+    // Restart weather updates (if applicable)
     console.log("Sensors started: on-wrist");
 }
 
