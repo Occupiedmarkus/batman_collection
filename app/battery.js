@@ -11,7 +11,6 @@ let svg = document.getElementById("battery-display");
 
 // Variable to store the last reported battery level
 let lastBatteryLevel = -1; // Initialize to an invalid value
-let flashInterval; // Variable to store the interval ID
 
 // Initial call to update the battery level
 updateBatteryLevel();
