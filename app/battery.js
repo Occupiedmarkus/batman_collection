@@ -11,7 +11,6 @@ let svg = document.getElementById("battery-display");
 
 // Variable to store the last reported battery level
 let lastBatteryLevel = -1; // Initialize to an invalid value
-let flashInterval; // Variable to store the interval ID
 
 // Initial call to update the battery level
 updateBatteryLevel();
@@ -21,6 +20,7 @@ battery.onchange = () => {
     updateBatteryLevel();
 };
 
+// Update battery level and display
 export function updateBatteryLevel() {
     updateSvgTexts("I"); // Set battery indicator 
     const batteryLevel = battery.chargeLevel; // Get the current battery level (0-100)
@@ -62,8 +62,8 @@ export function updateBatteryLevel() {
 
 // Add charging state listener
 battery.onchargingchanged = () => {
-        // Optionally, reset to a default color when not charging
-        updateBatteryLevel();
+    console.log("Charging state changed. Current state:", battery.charging);
+    updateBatteryLevel(); // Update immediately when charging state changes
 };
 
 // Helper function to set block colors
@@ -74,6 +74,7 @@ function setBlockColors(c1, c2, c3, c4, c5) {
     b4.style.fill = c4;
     b5.style.fill = c5;
 }
+
 // Function to update the text of the SVG elements
 function updateSvgTexts(text) {
     b1.text = text; // Update text for element 1
