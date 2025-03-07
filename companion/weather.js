@@ -31,13 +31,11 @@ export function displayWeather() {
                 if (data.locations.length > 0) {
                     const currentWeather = data.locations[0].currentWeather;
 
-                    
-
                     const conditionCode = currentWeather.weatherCondition;
                     const conditionName = findWeatherConditionName(WeatherCondition, conditionCode);
 
                     weatherUpdate.cond = conditionName;
-                    console.log("Code:" + conditionCode + "- Condition:" + conditionName+".");
+                    console.log("Code:" + conditionCode + "- Condition:" + conditionName + ".");
                     weatherUpdate.temp = Math.floor(currentWeather.temperature);
                     weatherUpdate.loc = data.locations[0].name;
                     weatherUpdate.uni = data.temperatureUnit;
@@ -46,22 +44,22 @@ export function displayWeather() {
                     console.log("Weather fetched.");
                 } else {
                     console.error("No locations found in weather data.");
+                    handleError("LocationUnavailableError");
                 }
 
                 sendUpdate(weatherUpdate); // Attempt to send the update
             })
             .catch(error => {
                 console.error("Error fetching weather data:", error);
-                if (error.stack) {
-                    console.error("Error stack:", error.stack);
+                if (error instanceof LocationUnavailableError) {
+                    handleError("LocationUnavailableError");
+                } else if (error instanceof WeatherServiceUnavailableError) {
+                    handleError("WeatherServiceUnavailableError");
+                } else if (error instanceof NetworkUnreachableError) {
+                    handleError("NetworkUnreachableError");
+                } else {
+                    handleError("Error retrieving data");
                 }
-                sendUpdate({
-                    temp: null,
-                    code: "Error retrieving data",
-                    cond: "Error retrieving data",
-                    loc: "Unknown",
-                    uni: "C"
-                });
             });
     } else {
         console.error("Location permission not granted.");
@@ -73,6 +71,49 @@ export function displayWeather() {
             uni: "C"
         });
     }
+}
+
+function handleError(errorType) {
+    const errorMessages = {
+        "LocationUnavailableError": {
+            temp: null,
+            code: "Location unavailable",
+            cond: "Location unavailable",
+            loc: "Unknown",
+            uni: "C"
+        },
+        "WeatherServiceUnavailableError": {
+            temp: null,
+            code: "Weather service unavailable",
+            cond: "Weather service unavailable",
+            loc: "Unknown",
+            uni: "C"
+        },
+        "NetworkUnreachableError": {
+            temp: null,
+            code: "Network unreachable",
+            cond: "Network unreachable",
+            loc: "Unknown",
+            uni: "C"
+        },
+        "QuotaExceededError": {
+            temp: null,
+            code: "Quota exceeded",
+            cond: "Quota exceeded",
+            loc: "Unknown",
+            uni: "C"
+        },
+        "default": {
+            temp: null,
+            code: "Unknown error",
+            cond: "Unknown error",
+            loc: "Unknown",
+            uni: "C"
+        }
+    };
+
+    const message = errorMessages[errorType] || errorMessages["default"];
+    sendUpdate(message);
 }
 
 function sendUpdate(weatherUpdate) {
