@@ -33,6 +33,10 @@ switch (cond) {
     case "sunnyday":
         weatherImage.href = "../resources/weather/sunny_day.png";
         break;
+    case "snow":
+    case "Snow":
+        weatherImage.href = "../resources/weather/snow.png";
+        break;     
     case "Rain":
     case "rain":
     case "Showers":
