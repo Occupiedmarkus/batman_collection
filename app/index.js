@@ -55,6 +55,7 @@ function onDisplayChange() {
         
         // Hide elements when AOD is active
         if (display.aodActive) {
+            hrIcon2.style.opacity ="1";
             hrIcon2.style.display = 'inline';
             hrIcon.style.display = 'none';
             batman.style.display = 'none';
