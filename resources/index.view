@@ -1,7 +1,17 @@
 <svg width="336" height="336" xmlns="http://www.w3.org/2000/svg">
     <!-- Background color element -->
     <rect id="bg_color" width="100%" height="100%"/>
-    <image href="beyond/frame_02.png" x="13%" y="0" width="75%" height="75%" />
+    <image id="batman" href="beyond/frame_02.png" x="13%" y="0" width="75%" height="75%" />
+    <image 
+            id="hrIcon2" 
+            x="0" 
+            y="10%" 
+            width="100%" 
+            height="80%" 
+            href="beyond/frame_03.png" 
+            opacity="0"
+            load="sync" 
+        />
     <svg>
     <symbol id="animatedHRImage">
         <image 
