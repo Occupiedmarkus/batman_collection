@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update battery level display initially and then every minute
     updateBatteryLevel(); // Log the initial battery level
 });
+
 /*
 // Check if the device supports AOD and if permission is granted
 if (display.aodAvailable && device.permissions.granted("access_aod")) {
