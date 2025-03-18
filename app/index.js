@@ -30,7 +30,7 @@ let myElement = document.getElementById("iFrame");
 // Listen for incoming messages from the companion
 peerSocket.addEventListener("message", (evt) => {
     if (evt && evt.data) {
-        console.log("Received update:", evt.data); // Log the entire received message
+        console.log("Received update:"+ evt.data.value||"default"); // Log the entire received message
 
         // Filter and handle messages based on the key
         if (evt.data.key === "myColor") {
