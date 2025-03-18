@@ -31,7 +31,7 @@ let myElement = document.getElementById("iFrame");
 // Listen for incoming messages from the companion
 peerSocket.addEventListener("message", (evt) => {
     if (evt && evt.data) {
-        console.log("Received update:"+ evt.data.value||"default"); // Log the entire received message
+        console.log("Received update:"+ evt.data.name||"default"); // Log the entire received message
 
         // Filter and handle messages based on the key
         if (evt.data.key === "myColor") {
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update battery level display initially and then every minute
     updateBatteryLevel(); // Log the initial battery level
 });
-
+/*
 // Check if the device supports AOD and if permission is granted
 if (display.aodAvailable && device.permissions.granted("access_aod")) {
     display.aodAllowed = true; // Allow AOD
@@ -63,7 +63,7 @@ if (display.aodAvailable && device.permissions.granted("access_aod")) {
     // Respond to display change events
     display.addEventListener("change", onDisplayChange);
 }
-/*
+
 function onDisplayChange() {
     if (display.aodAllowed && display.aodEnabled) { // entering or leaving AOD
         
