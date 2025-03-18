@@ -28,16 +28,19 @@ const block5 = document.getElementById('block5');
 let myElement = document.getElementById("iFrame");
 
 // Listen for incoming messages from the companion
-peerSocket.onmessage = (evt) => {
-    console.log("Received update."); // Log the entire received message
-    updateWeatherDisplay(evt.data); // Pass the received data to the display function
-};
+peerSocket.addEventListener("message", (evt) => {
+    if (evt && evt.data) {
+        console.log("Received update:", evt.data); // Log the entire received message
 
-
-messaging.peerSocket.addEventListener("message", (evt) => {
-  if (evt && evt.data && evt.data.key === "myColor") {
-    myElement.style.fill = evt.data.value;
-  }
+        // Filter and handle messages based on the key
+        if (evt.data.key === "myColor") {
+            // Handle color update
+            myElement.style.fill = evt.data.value;
+        } else {
+            // Handle other types of messages (e.g., weather updates)
+            updateWeatherDisplay(evt.data);
+        }
+    }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
