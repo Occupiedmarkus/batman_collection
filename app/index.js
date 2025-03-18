@@ -1,4 +1,5 @@
 import * as document from "document";
+import * as messaging from "messaging";
 import { initializeClock } from "./clock.js";  
 import { initializeDate } from "./date.js"; 
 import { initializeHR } from "./hrm.js";
@@ -24,11 +25,20 @@ const block3 = document.getElementById('block3');
 const block4 = document.getElementById('block4');
 const block5 = document.getElementById('block5');
 
+let myElement = document.getElementById("iFrame");
+
 // Listen for incoming messages from the companion
 peerSocket.onmessage = (evt) => {
     console.log("Received update."); // Log the entire received message
     updateWeatherDisplay(evt.data); // Pass the received data to the display function
 };
+
+
+messaging.peerSocket.addEventListener("message", (evt) => {
+  if (evt && evt.data && evt.data.key === "myColor") {
+    myElement.style.fill = evt.data.value;
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     checkWristStatus();

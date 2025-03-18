@@ -9,11 +9,9 @@
             opacity="0"
             load="sync" 
         />
-    
     <svg>
    
      <symbol id="animatedHRImage">
-    <!--filtering tint-->
         <image 
             id="hrIcon" 
             x="0" 
@@ -30,7 +28,7 @@
     </svg>
 
     <!--filtering tint-->
-    <rect x="5%" y="40%" width="90%" height="48%" fill="#fe0000" fill-opacity="0.75"/>
+    <rect id="iFrame" x="5%" y="40%" width="90%" height="48%" fill="#fe0000" fill-opacity="0.75"/>
     
     <image 
     id="hrIcon_frame" 
