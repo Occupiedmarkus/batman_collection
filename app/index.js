@@ -10,7 +10,7 @@ import { display } from "display";
 import { me as device } from "device"; // Import device module
 
 // Declare element references
-const batteryEl = document.getElementById('battery-display');
+/*const batteryEl = document.getElementById('battery-display');
 const hrIcon = document.getElementById('hrIcon');
 const hrIcon2 = document.getElementById('hrIcon2');
 const batman = document.getElementById('batman');
@@ -23,6 +23,7 @@ const block2 = document.getElementById('block2');
 const block3 = document.getElementById('block3');
 const block4 = document.getElementById('block4');
 const block5 = document.getElementById('block5');
+*/
 
 // Listen for incoming messages from the companion
 peerSocket.onmessage = (evt) => {
@@ -49,7 +50,7 @@ if (display.aodAvailable && device.permissions.granted("access_aod")) {
     // Respond to display change events
     display.addEventListener("change", onDisplayChange);
 }
-
+/*
 function onDisplayChange() {
     if (display.aodAllowed && display.aodEnabled) { // entering or leaving AOD
         
@@ -98,3 +99,4 @@ function displayCommon(normal) {
         // Stop heart sensor if it was running
     }
 }
+    */
