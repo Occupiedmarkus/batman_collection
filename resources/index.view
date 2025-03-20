@@ -55,7 +55,7 @@
         <image id="mins1" href="0.png" x="172" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
         <image id="mins2" href="0.png" x="192" y="125" width="30" height="45" fill="#FFFFFF" class="foreground" />
     
-    <!-- HRM -->
+    <!-- Heart Rate Digit-->
     </svg>
         <image id="hr1" href="0.png" x="136" y="219" width="30" height="30" fill="grey" class="foreground" />
         <image id="hr2" href="0.png" x="156" y="219" width="30" height="30" fill="grey" class="foreground" />
