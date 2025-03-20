@@ -19,6 +19,9 @@ const handleWeatherUpdate = () => {
 peerSocket.onopen = () => {
     console.log("Companion app connected to the watch.");
     handleWeatherUpdate(); // Call to update weather on connection
+    
+    // Send the saved color when connection is established
+    sendValue(KEY_COLOR, settingsStorage.getItem(KEY_COLOR));
 };
 
 peerSocket.onclose = () => {
