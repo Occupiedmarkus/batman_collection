@@ -8,9 +8,20 @@ import { peerSocket } from "messaging";
 import { updateWeatherDisplay } from "./weatherDisplay.js"; 
 import { checkWristStatus } from "./accelerometer.js";
 import { aodDisplay } from "./aod.js"
+import * as fs from "fs";
 
 import { me as device } from "device"; // Import device module
 let myElement = document.getElementById("iFrame");
+
+// Apply saved color on startup
+try {
+    if (fs.existsSync("color.txt")) {
+        const savedColor = fs.readFileSync("color.txt", "utf-8");
+        myElement.style.fill = savedColor;
+    }
+} catch (error) {
+    console.log("Error reading color file:", error);
+}
 
 // Listen for incoming messages from the companion
 peerSocket.addEventListener("message", (evt) => {
@@ -20,6 +31,12 @@ peerSocket.addEventListener("message", (evt) => {
         if (evt.data.key === "myColor") {
             // Handle color update
             myElement.style.fill = evt.data.value;
+            // Save the color to file
+            try {
+                fs.writeFileSync("color.txt", evt.data.value, "utf-8");
+            } catch (error) {
+                console.log("Error saving color file:", error);
+            }
         } else {
             // Handle other types of messages (e.g., weather updates)
             updateWeatherDisplay(evt.data);
