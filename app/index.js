@@ -9,8 +9,7 @@ import { updateWeatherDisplay } from "./weatherDisplay.js";
 import { checkWristStatus } from "./accelerometer.js";
 import { aodDisplay } from "./aod.js"
 import * as fs from "fs";
-
-import { me as device } from "device"; // Import device module
+import { me } from "appbit"; // Fix the import
 
 const SETTINGS_FILE = "settings.json";
 const SETTINGS_TYPE = "json";
@@ -29,7 +28,7 @@ function loadSettings() {
 }
 
 // Save settings when app unloads
-device.addEventListener("unload", saveSettings);
+me.addEventListener("unload", saveSettings); // Use 'me' instead of 'device'
 function saveSettings() {
     fs.writeFileSync(SETTINGS_FILE, settings, SETTINGS_TYPE);
 }
