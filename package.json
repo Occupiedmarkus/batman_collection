@@ -19,7 +19,8 @@
       "access_aod"
     ],
     "buildTargets": [
-      "vulcan"
+      "vulcan",
+      "atlas"
     ],
     "i18n": {},
     "defaultLanguage": "en-US"
