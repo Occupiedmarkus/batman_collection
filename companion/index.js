@@ -3,8 +3,6 @@ import { displayWeather } from "./weather.js";
 import { peerSocket } from "messaging"; 
 import { settingsStorage } from "settings";
 
-let KEY_COLOR = "myColor";
-
 // Function to handle weather updates
 const handleWeatherUpdate = () => {
     if (companion.permissions.granted("access_location")) {
@@ -15,15 +13,14 @@ const handleWeatherUpdate = () => {
     }
 };
 
-// Listen for peerSocket connection changes
+// Message socket opens
 peerSocket.onopen = () => {
     console.log("Companion app connected to the watch.");
     handleWeatherUpdate(); // Call to update weather on connection
-    
-    // Send the saved color when connection is established
-    sendValue(KEY_COLOR, settingsStorage.getItem(KEY_COLOR));
+    restoreSettings(); // Restore all settings when connection is established
 };
 
+// Message socket closes
 peerSocket.onclose = () => {
     console.log("Companion app disconnected from the watch.");
 };
@@ -35,29 +32,31 @@ setInterval(() => {
     }
 }, 300000); // Check every 5 minutes
 
-// Settings management for color picking
+// User changes settings
 settingsStorage.addEventListener("change", (evt) => {
-    sendValue(evt.key, evt.newValue);
+    let data = {
+        key: evt.key,
+        value: evt.newValue
+    };
+    sendVal(data);
 });
 
-// Check for settings changed while the companion was not running
-if (companion.launchReasons.settingsChanged) {
-    sendValue(KEY_COLOR, settingsStorage.getItem(KEY_COLOR));
-}
-
-// Function to send value to the device
-function sendValue(key, val) {
-    if (val) {
-        sendSettingData({
-            key: key,
-            value: JSON.parse(val)
-        });
+// Restore any previously saved settings and send to the device
+function restoreSettings() {
+    for (let index = 0; index < settingsStorage.length; index++) {   
+        let key = settingsStorage.key(index);
+        if (key) {
+            let data = {
+                key: key,
+                value: settingsStorage.getItem(key)
+            };
+            sendVal(data);
+        }
     }
 }
 
-// Function to send setting data
-function sendSettingData(data) {
-    // Use peerSocket instead of messaging
+// Send data to device using Messaging API
+function sendVal(data) {
     if (peerSocket.readyState === peerSocket.OPEN) {
         peerSocket.send(data);
     } else {
