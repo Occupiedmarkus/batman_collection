@@ -11,16 +11,32 @@ import { aodDisplay } from "./aod.js"
 import * as fs from "fs";
 
 import { me as device } from "device"; // Import device module
+
+const SETTINGS_FILE = "settings.json";
+const SETTINGS_TYPE = "json";
+
+let settings = loadSettings();
 let myElement = document.getElementById("iFrame");
 
-// Apply saved color on startup
-try {
-    if (fs.existsSync("color.txt")) {
-        const savedColor = fs.readFileSync("color.txt", "utf-8");
-        myElement.style.fill = savedColor;
+function loadSettings() {
+    try {
+        return fs.readFileSync(SETTINGS_FILE, SETTINGS_TYPE);
+    } catch (ex) {
+        return {
+            myColor: "#fe0000" // Default color
+        };
     }
-} catch (error) {
-    console.log("Error reading color file:", error);
+}
+
+// Save settings when app unloads
+device.addEventListener("unload", saveSettings);
+function saveSettings() {
+    fs.writeFileSync(SETTINGS_FILE, settings, SETTINGS_TYPE);
+}
+
+// Apply saved color on startup
+if (settings.myColor) {
+    myElement.style.fill = settings.myColor;
 }
 
 // Listen for incoming messages from the companion
@@ -30,13 +46,9 @@ peerSocket.addEventListener("message", (evt) => {
         // Filter and handle messages based on the key
         if (evt.data.key === "myColor") {
             // Handle color update
-            myElement.style.fill = evt.data.value;
-            // Save the color to file
-            try {
-                fs.writeFileSync("color.txt", evt.data.value, "utf-8");
-            } catch (error) {
-                console.log("Error saving color file:", error);
-            }
+            settings.myColor = JSON.parse(evt.data.value);
+            myElement.style.fill = settings.myColor;
+            saveSettings(); // Save the updated settings
         } else {
             // Handle other types of messages (e.g., weather updates)
             updateWeatherDisplay(evt.data);
