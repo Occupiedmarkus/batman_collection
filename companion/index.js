@@ -13,11 +13,16 @@ const handleWeatherUpdate = () => {
     }
 };
 
-// Message socket opens
+// Handle the socket opening event
 peerSocket.onopen = () => {
     console.log("Companion app connected to the watch.");
-    handleWeatherUpdate(); // Call to update weather on connection
-    restoreSettings(); // Restore all settings when connection is established
+    handleWeatherUpdate(); // Initial weather update on connection
+    restoreSettings(); // Restore settings when connected
+
+    // Periodically fetch weather updates every 10 minutes
+    setInterval(() => {
+        handleWeatherUpdate(); // Fetch weather periodically
+    }, 1800000); // 30 minutes
 };
 
 // Message socket closes
