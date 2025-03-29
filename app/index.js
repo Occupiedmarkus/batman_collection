@@ -41,16 +41,18 @@ if (settings.myColor) {
 // Listen for incoming messages from the companion
 peerSocket.addEventListener("message", (evt) => {
     if (evt && evt.data) {
-        console.log("Pwr changed")
+        // Handle other types of messages (e.g., weather updates)
+        updateWeatherDisplay(evt.data);
+        console.log("weather updated")
         // Filter and handle messages based on the key
         if (evt.data.key === "myColor") {
             // Handle color update
+            console.log("Pwr changed")
             settings.myColor = JSON.parse(evt.data.value);
             myElement.style.fill = settings.myColor;
             saveSettings(); // Save the updated settings
         } else {
-            // Handle other types of messages (e.g., weather updates)
-            updateWeatherDisplay(evt.data);
+
         }
     }
 });
