@@ -5,96 +5,105 @@ const weatherImage = document.getElementById("weatherImage");
 
 // app/weatherDisplay.js
 export function updateWeatherDisplay(data) {
-    const { temp, cond, loc, uni } = data;
+    if (data && data.value) {
+        const weather = JSON.parse(data.value);
+        console.log("Parsed weather data:", weather);
 
-    console.log(`Weather: ${temp}°${uni} in ${loc}-${cond}.`);
+        const temperature = weather.temp !== null ? weather.temp : "N/A";
+        const condition = weather.cond || "Unknown";
+        const location = weather.loc || "Unknown";
 
-// Set the appropriate weather image based on the condition
-switch (cond) {
-    case "Cloudy":
-    case "cloudy":
-    case "Overcast":
-    case "overcast":
-        weatherImage.href = "../resources/weather/cloudy.png";
-        break;
+        console.log(`Weather: ${temperature}° - ${condition} in ${location}`);
 
-    case "Hot":
-    case "hot":
-        weatherImage.href = "../resources/weather/hot.png";
-        break;
+        // Set the appropriate weather image based on the condition
+        switch (condition) { // Use 'condition' here
+            case "Cloudy":
+            case "cloudy":
+            case "Overcast":
+            case "overcast":
+                weatherImage.href = "../resources/weather/cloudy.png";
+                break;
 
-    case "HazySunshineDay":
-    case "hazysunshineday":
-    case "HazyMoonlight":
-    case "hazymoonlight":
-    case "PartlySunnyDay":
-    case "partlysunnyday":
-    case "IntermittentCloudsDay":
-    case "intermittentcloudsday":
-    case "IntermittentCloudsNight":
-    case "intermittentcloudsnight":
-        weatherImage.href = "../resources/weather/hazy_sunshine_day.png";
-        break;
+            case "Hot":
+            case "hot":
+                weatherImage.href = "../resources/weather/hot.png";
+                break;
 
-    case "SunnyDay":
-    case "sunnyday":
-    case "MostlyClearNight":
-    case "mostlyclearnight":
-    case "ClearNight":
-    case "clearnight":
-        weatherImage.href = "../resources/weather/sunny_day.png";
-        break;
+            case "HazySunshineDay":
+            case "hazysunshineday":
+            case "HazyMoonlight":
+            case "hazymoonlight":
+            case "PartlySunnyDay":
+            case "partlysunnyday":
+            case "IntermittentCloudsDay":
+            case "intermittentcloudsday":
+            case "IntermittentCloudsNight":
+            case "intermittentcloudsnight":
+                weatherImage.href = "../resources/weather/hazy_sunshine_day.png";
+                break;
 
-    case "Snow":
-    case "snow":
-    case "Flurries":
-    case "flurries":
-    case "MostlyCloudyWithSnowDay":
-    case "mostlycloudywithsnowday":
-    case "MostlyCloudyWithSnowNight":
-    case "mostlycloudywithsnownight":
-    case "Sleet":
-    case "sleet":
-    case "Ice":
-    case "ice":
-        weatherImage.href = "../resources/weather/snow.png";
-        break;
+            case "SunnyDay":
+            case "sunnyday":
+            case "MostlyClearNight":
+            case "mostlyclearnight":
+            case "ClearNight":
+            case "clearnight":
+                weatherImage.href = "../resources/weather/sunny_day.png";
+                break;
 
-    case "Rain":
-    case "rain":
-    case "Showers":
-    case "showers":
-    case "FreezingRain":
-    case "freezingrain":
-    case "RainAndSnow":
-    case "rainandsnow":
-    case "MostlyCloudyWithShowersDay":
-    case "mostlycloudywithshowersday":
-    case "MostlyCloudyWithShowersNight":
-    case "mostlycloudywithshowersnight":
-        weatherImage.href = "../resources/weather/rain.png";
-        break;
+            case "Snow":
+            case "snow":
+            case "Flurries":
+            case "flurries":
+            case "MostlyCloudyWithSnowDay":
+            case "mostlycloudywithsnowday":
+            case "MostlyCloudyWithSnowNight":
+            case "mostlycloudywithsnownight":
+            case "Sleet":
+            case "sleet":
+            case "Ice":
+            case "ice":
+                weatherImage.href = "../resources/weather/snow.png";
+                break;
 
-    case "Windy":
-    case "windy":
-        weatherImage.href = "../resources/weather/windy.png";
-        break;
+            case "Rain":
+            case "rain":
+            case "Showers":
+            case "showers":
+            case "FreezingRain":
+            case "freezingrain":
+            case "RainAndSnow":
+            case "rainandsnow":
+            case "MostlyCloudyWithShowersDay":
+            case "mostlycloudywithshowersday":
+            case "MostlyCloudyWithShowersNight":
+            case "mostlycloudywithshowersnight":
+                weatherImage.href = "../resources/weather/rain.png";
+                break;
 
-    case "Thunderstorms":
-    case "thunderstorms":
-    case "MostlyCloudyWithThunderstormsDay":
-    case "mostlycloudywiththunderstormsday":
-    case "MostlyCloudyWithThunderstormsNight":
-    case "mostlycloudywiththunderstormsnnight":
-    case "PartlyCloudyWithThunderstormsNight":
-    case "partlycloudywiththunderstormsnnight":
-    case "PartlySunnyWithThunderstormsDay":
-    case "partlysunnywiththunderstormsday":
-        weatherImage.href = "../resources/weather/thunderstorms.png";
-        break;
+            case "Windy":
+            case "windy":
+                weatherImage.href = "../resources/weather/windy.png";
+                break;
 
-    default:
-        weatherImage.href = "../resources/weather/default.png";
-        console.log("Default case triggered");
-}
+            case "Thunderstorms":
+            case "thunderstorms":
+            case "MostlyCloudyWithThunderstormsDay":
+            case "mostlycloudywiththunderstormsday":
+            case "MostlyCloudyWithThunderstormsNight":
+            case "mostlycloudywiththunderstormsnnight":
+            case "PartlyCloudyWithThunderstormsNight":
+            case "partlycloudywiththunderstormsnnight":
+            case "PartlySunnyWithThunderstormsDay":
+            case "partlysunnywiththunderstormsday":
+                weatherImage.href = "../resources/weather/thunderstorms.png";
+                break;
+
+            default:
+                weatherImage.href = "../resources/weather/default.png";
+                console.log("Default case triggered");
+        }
+    } else {
+        console.log("No weather data available.");
+    }
 }
