@@ -7,7 +7,7 @@ import { updateBatteryLevel } from "./battery.js";
 import { peerSocket } from "messaging";
 import { updateWeatherDisplay } from "./weatherDisplay.js"; 
 import { checkWristStatus } from "./accelerometer.js";
-import { aodDisplay } from "./aod.js"
+import { aodDisplay } from "./aod.js";
 import * as fs from "fs";
 import { me } from "appbit"; // Fix the import
 
@@ -28,7 +28,7 @@ function loadSettings() {
 }
 
 // Save settings when app unloads
-me.addEventListener("unload", saveSettings); // Use 'me' instead of 'device'
+me.addEventListener("unload", saveSettings);
 function saveSettings() {
     fs.writeFileSync(SETTINGS_FILE, settings, SETTINGS_TYPE);
 }
@@ -40,23 +40,21 @@ if (settings.myColor) {
 
 // Listen for incoming messages from the companion
 peerSocket.addEventListener("message", (evt) => {
-    if (evt && evt.data) {
-        // Handle other types of messages (e.g., weather updates)
+    if (evt.data.key === "weather") {
         updateWeatherDisplay(evt.data);
-        console.log("weather updated")
-        // Filter and handle messages based on the key
-        if (evt.data.key === "myColor") {
-            // Handle color update
-            console.log("Pwr changed")
+    } else if (evt.data.key === "myColor") {
+        console.log("Power changed");
+        try {
             settings.myColor = JSON.parse(evt.data.value);
             myElement.style.fill = settings.myColor;
             saveSettings(); // Save the updated settings
-        } else {
-
+        } catch (error) {
+            console.error("Failed to parse color value:", error);
         }
     }
 });
 
+// Initialize displays when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
     aodDisplay();
     checkWristStatus();
