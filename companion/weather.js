@@ -64,11 +64,8 @@ export function displayWeather() {
     } else {
         console.error("Location permission not granted.");
         sendUpdate({
-            temp: null,
-            code: "Permission denied",
-            cond: "Permission denied",
-            loc: "Unknown",
-            uni: "C"
+            key: "weather",
+            value: JSON.stringify(weatherUpdate)
         });
     }
 }
@@ -113,12 +110,18 @@ function handleError(errorType) {
     };
 
     const message = errorMessages[errorType] || errorMessages["default"];
-    sendUpdate(message);
+    sendUpdate({
+        key: "weather", // Use a key to indicate this is a weather update
+        value: JSON.stringify(message) // Convert the message to a JSON string
+    });
 }
 
 function sendUpdate(weatherUpdate) {
     if (peerSocket.readyState === peerSocket.OPEN) {
-        peerSocket.send(weatherUpdate);
+        peerSocket.send({
+            key: "weather",
+            value: JSON.stringify(weatherUpdate)
+        });
     } else {
         console.error("Peer socket is not open. Queuing update.");
         queuedUpdates.push(weatherUpdate); // Queue the update
