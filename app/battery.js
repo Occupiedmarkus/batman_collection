@@ -34,7 +34,7 @@ export function updateBatteryLevel() {
     };
 
     // Log the current battery level
-    console.log("Battery level: " + batteryLevel + "%");
+    console.log("Battery drained: " + batteryLevel + "%");
 
     // Check if the battery level has changed by at least 10%
     if (Math.abs(batteryLevel - lastBatteryLevel) >= 10 || lastBatteryLevel === -1) {
